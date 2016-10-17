@@ -48,6 +48,10 @@
      <Compile Include="Assets\BattleFieldInit.cs" />
      <Compile Include="Assets\MiniMap.cs" />
      <Compile Include="Assets\Model.cs" />
+     <Compile Include="Assets\MouseCtrl.cs" />
+     <Compile Include="Assets\Scripts\CTRL\BehaviacFileManager.cs" />
+     <Compile Include="Assets\Scripts\CTRL\BehaviacSystem.cs" />
+     <Compile Include="Assets\Scripts\Unit\JiQiangBing.cs" />
      <Compile Include="Assets\Scripts\behaviac\runtime\Agent\Agent.cs" />
      <Compile Include="Assets\Scripts\behaviac\runtime\Agent\Context.cs" />
      <Compile Include="Assets\Scripts\behaviac\runtime\Base\Attributs.cs" />
@@ -125,6 +129,10 @@
      <Compile Include="Assets\Scripts\behaviac\runtime\HTN\PlannerTask.cs" />
      <Compile Include="Assets\Scripts\behaviac\runtime\HTN\Task.cs" />
      <Compile Include="Assets\Scripts\behaviac\runtime\Workspace.cs" />
+     <Compile Include="Assets\Scripts\behaviac_generated\behaviors\generated_behaviors.cs" />
+     <Compile Include="Assets\Scripts\behaviac_generated\types\AgentProperties.cs" />
+     <Compile Include="Assets\Scripts\behaviac_generated\types\FSM_Ctrl.cs" />
+     <None Include="Assets\behaviac\FSM_Ctrl_Meta.xml" />
      <None Include="Assets\Scripts\behaviac\runtime\readme.txt" />
      <None Include="Assets\Scripts\behaviac\runtime\version.txt" />
      <None Include="Assets\Scripts\behaviac\runtime\license.txt" />
