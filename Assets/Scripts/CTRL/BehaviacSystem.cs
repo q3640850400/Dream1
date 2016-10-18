@@ -44,7 +44,8 @@ public class BehaviacSystem
     {
         get
         {
-            string relativePath = "/Resources/behaviac/exported";
+			//string relativePath = "/Resources/behaviac/exported";
+			string relativePath = "/Scripts/behaviac_generated/behaviors";
             string path = "";
             if (Application.platform == RuntimePlatform.WindowsEditor)
             {
