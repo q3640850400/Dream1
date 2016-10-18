@@ -10,6 +10,11 @@ using System.Collections.Generic;
 public class FSM_Ctrl : behaviac.Agent
 {
 	// properties
+	public string behaviorTree 		= "FSM_Ctrl";
+	protected bool btloadResult 	= false;
+	string ConstructionPrefabPath="单位/Prefab/";
+	GameObject ReadyBuild = null;//准备建造的建筑
+	public string Name;
 
 	[behaviac.MemberMetaInfo("Status", "Status")]
 	public int Status = 0;
@@ -22,25 +27,63 @@ public class FSM_Ctrl : behaviac.Agent
 
 	// methods
 
+
+	[behaviac.MethodMetaInfo("Enter_ReadyConstruct", "Enter_ReadyConstruct")]
+	private void Enter_ReadyConstruct()
+	{
+		// Write your logic codes here.
+		Debug.Log("请选择建筑位置");
+
+	}
+
 	[behaviac.MethodMetaInfo("ReadyConstruct", "ReadyConstruct")]
 	private void ReadyConstruct()
 	{
-		Debug.Log("请选择建筑位置");
 		// Write your logic codes here.
+		if (Input.GetMouseButtonDown (0)) {
+			
+			MouseStatus = 1;
+			ReadyBuild = GameObject.Instantiate (Resources.Load(ConstructionPrefabPath + Name,typeof(GameObject)), Input.mousePosition, Quaternion.identity) as GameObject;
+		}
 	}
 
 	[behaviac.MethodMetaInfo("Selecting", "Selecting")]
 	private void Selecting()
 	{
-		Debug.Log ("请选择单位");
 		// Write your logic codes here.
+		Debug.Log ("请选择单位");
+
 	}
 
 	[behaviac.MethodMetaInfo("Constructing", "Constructing")]
 	private void Constructing()
 	{
-		Debug.Log ("哦哦哦");
+		ReadyBuild.transform.position.Set (Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
 		// Write your logic codes here.
+		if (Input.GetMouseButtonUp (0)) {
+
+		}
 	}
 
+	void Start () {
+		init ();
+	}
+	// Update is called once per frame
+	void Update () {
+		btexec ();
+	}
+	public bool init(){
+		BehaviacSystem BS = new BehaviacSystem ();
+		BS.Init ();
+		behaviac.Agent.BindInstance (this, "FSM_Ctrl0");
+		if(behaviorTree.Length > 0)
+		{
+			btloadResult = btload(behaviorTree, true);
+			if(btloadResult)
+				btsetcurrent(behaviorTree);
+			else
+				Debug.LogError("Behavior tree data load failed! " + behaviorTree);
+		}
+		return true;
+	}
 }

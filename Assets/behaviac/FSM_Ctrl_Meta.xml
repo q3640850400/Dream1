@@ -38,6 +38,7 @@
       <Member Name="Status" DisplayName="Status" Desc="Status" Type="int" Class="FSM_Ctrl" Public="true" />
       <Member Name="MouseStatus" DisplayName="MouseStatus" Desc="MouseStatus" Type="int" Class="FSM_Ctrl" Public="true" />
       <Member Name="isConAva" DisplayName="isConAva" Desc="isConAva" Type="bool" Class="FSM_Ctrl" Public="true" />
+      <Method Name="Enter_ReadyConstruct" DisplayName="Enter_ReadyConstruct" Desc="Enter_ReadyConstruct" ReturnType="void" Class="FSM_Ctrl" />
       <Method Name="ReadyConstruct" DisplayName="ReadyConstruct" Desc="ReadyConstruct" ReturnType="void" Class="FSM_Ctrl" />
       <Method Name="Selecting" DisplayName="Selecting" Desc="Selecting" ReturnType="void" Class="FSM_Ctrl" />
       <Method Name="Constructing" DisplayName="Constructing" Desc="Constructing" ReturnType="void" Class="FSM_Ctrl" />
