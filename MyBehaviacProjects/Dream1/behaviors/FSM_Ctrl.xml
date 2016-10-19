@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Behavior Version="5">
+  <Node Class="Behaviac.Design.Nodes.Behavior" AgentType="FSM_Ctrl" Domains="" Enable="true" HasOwnPrefabData="false" Id="-1" PrefabName="" PrefabNodeId="-1">
+    <Comment Background="NoColor" Text="" />
+    <DescriptorRefs value="0:" />
+    <Attachment Class="PluginBehaviac.Events.StartCondition" Enable="true" Id="0" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+    <FSMNodes ScreenLocationX="0" ScreenLocationY="0">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="1" IsEndState="false" Method="&quot;&quot;" Name="状态" PrefabName="" PrefabNodeId="-1" ScreenLocationX="179.2857" ScreenLocationY="0">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="6" Operator="Assign" Opl="int Self.FSM_Ctrl::Status" Opr1="&quot;&quot;" Opr2="const int 0" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="7" Operator="Assign" Opl="int Self.FSM_Ctrl::MouseStatus" Opr1="&quot;&quot;" Opr2="const int 0" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="4" Operator="Equal" Opl="int Self.FSM_Ctrl::Status" Opr1="&quot;&quot;" Opr2="const int 1" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="5" Operator="Equal" Opl="int Self.FSM_Ctrl::Status" Opr1="&quot;&quot;" Opr2="const int 2" PrefabAttachmentId="-1" TargetFSMNodeId="3" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="2" IsEndState="false" Method="Self.FSM_Ctrl::Selecting()" Name="选兵状态(Selecting)" PrefabName="" PrefabNodeId="-1" ScreenLocationX="424.7948" ScreenLocationY="-118.7661">
+        <Comment Background="NoColor" Text="" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="3" IsEndState="false" Method="Self.FSM_Ctrl::ReadyConstruct()" Name="准备建筑状态(ReadyConstruct)" PrefabName="" PrefabNodeId="-1" ScreenLocationX="427" ScreenLocationY="7.821418">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="12" Operator="Invalid" Opl="Self.FSM_Ctrl::Enter_ReadyConstruct()" Opr1="&quot;&quot;" Opr2="&quot;&quot;" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="8" Operator="Equal" Opl="int Self.FSM_Ctrl::MouseStatus" Opr1="&quot;&quot;" Opr2="const int 1" PrefabAttachmentId="-1" TargetFSMNodeId="9" />
+      </Node>
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="9" IsEndState="false" Method="Self.FSM_Ctrl::Constructing()" Name="建筑状态(Constructing)" PrefabName="" PrefabNodeId="-1" ScreenLocationX="723.0544" ScreenLocationY="-71.98534">
+        <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.Precondition" BinaryOperator="And" Enable="true" Id="11" Operator="Assign" Opl="bool Self.FSM_Ctrl::isConAva" Opr1="&quot;&quot;" Opr2="const bool false" Phase="Enter" PrefabAttachmentId="-1" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="10" Operator="Equal" Opl="bool Self.FSM_Ctrl::isConAva" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
+      </Node>
+    </FSMNodes>
+  </Node>
+</Behavior>

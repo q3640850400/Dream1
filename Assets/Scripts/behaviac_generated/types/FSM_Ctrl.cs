@@ -15,6 +15,7 @@ public class FSM_Ctrl : behaviac.Agent
 	string ConstructionPrefabPath="单位/Prefab/";
 	GameObject ReadyBuild = null;//准备建造的建筑
 	public string Name;
+	LayerMask LandMask=1<<8;
 
 	[behaviac.MemberMetaInfo("Status", "Status")]
 	public int Status = 0;
@@ -43,7 +44,7 @@ public class FSM_Ctrl : behaviac.Agent
 		if (Input.GetMouseButtonDown (0)) {
 			
 			MouseStatus = 1;
-			ReadyBuild = GameObject.Instantiate (Resources.Load(ConstructionPrefabPath + Name,typeof(GameObject)), Input.mousePosition, Quaternion.identity) as GameObject;
+			ReadyBuild = GameObject.Instantiate (Resources.Load(ConstructionPrefabPath + Name,typeof(GameObject)), new Vector3(0,0,0), Quaternion.identity) as GameObject;
 		}
 	}
 
@@ -58,10 +59,18 @@ public class FSM_Ctrl : behaviac.Agent
 	[behaviac.MethodMetaInfo("Constructing", "Constructing")]
 	private void Constructing()
 	{
-		ReadyBuild.transform.position.Set (Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
 		// Write your logic codes here.
-		if (Input.GetMouseButtonUp (0)) {
+		//ReadyBuild.transform.position=Input.mousePosition;
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+		//if(Physics.Raycast(ray,Input.mousePosition,100,FieldMask)
+		if(Physics.Raycast(ray,out hit,1000,LandMask)){
+			Debug.Log (hit.point);
+			ReadyBuild.transform.position=hit.point;
+		}
 
+		if (Input.GetMouseButtonUp (0)) {
+			isConAva = true;
 		}
 	}
 
@@ -75,7 +84,8 @@ public class FSM_Ctrl : behaviac.Agent
 	public bool init(){
 		BehaviacSystem BS = new BehaviacSystem ();
 		BS.Init ();
-		behaviac.Agent.BindInstance (this, "FSM_Ctrl0");
+		Debug.Log("lol");
+		//behaviac.Agent.BindInstance (this, "FSM_Ctrl0");
 		if(behaviorTree.Length > 0)
 		{
 			btloadResult = btload(behaviorTree, true);

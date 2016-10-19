@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--EXPORTED BY TOOL, DON'T MODIFY IT!-->
+<meta>
+  <types />
+  <agents>
+    <agent type="FSM_Ctrl" base="behaviac::Agent" disp="FSM_Ctrl" desc="FSM_Ctrl">
+      <properties>
+        <property name="Status" type="System.Int32" classname="FSM_Ctrl" defaultvalue="0" static="false" public="true" readonly="false" disp="Status" desc="Status" />
+        <property name="MouseStatus" type="System.Int32" classname="FSM_Ctrl" defaultvalue="0" static="false" public="true" readonly="false" disp="MouseStatus" desc="MouseStatus" />
+        <property name="isConAva" type="System.Boolean" classname="FSM_Ctrl" defaultvalue="false" static="false" public="true" readonly="false" disp="isConAva" desc="isConAva" />
+      </properties>
+      <methods>
+        <method name="ReadyConstruct" returntype="System.Void" classname="FSM_Ctrl" static="false" public="false" istask="false" disp="ReadyConstruct" desc="ReadyConstruct" />
+        <method name="Selecting" returntype="System.Void" classname="FSM_Ctrl" static="false" public="false" istask="false" disp="Selecting" desc="Selecting" />
+        <method name="Constructing" returntype="System.Void" classname="FSM_Ctrl" static="false" public="false" istask="false" disp="Constructing" desc="Constructing" />
+      </methods>
+    </agent>
+  </agents>
+</meta>

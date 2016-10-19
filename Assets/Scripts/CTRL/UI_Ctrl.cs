@@ -10,6 +10,7 @@ public class UI_Ctrl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Singleton<FSM_Ctrl>.Instance.Status = 0;
 		page_constructions=GameObject.Find("建筑页面");
 		//m = GameObject.Find ("Mouse_Ctrl").GetComponent<Mouse_Ctrl> ();
 		page_constructions.SetActive (false);

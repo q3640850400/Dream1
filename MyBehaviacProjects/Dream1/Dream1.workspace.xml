@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<workspace name="Dream1" xmlmetafolder="..\..\Assets\behaviac" folder="behaviors" export="..\..\Assets\Scripts" language="cs">
+  <xmlmeta>FSM_Ctrl_Meta.xml</xmlmeta>
+  <export>
+    <cs>
+      <isexported>True</isexported>
+      <exportunifiedfile>True</exportunifiedfile>
+      <folder>../../../Assets/Scripts</folder>
+    </cs>
+    <xml>
+      <isexported>False</isexported>
+    </xml>
+  </export>
+</workspace>
