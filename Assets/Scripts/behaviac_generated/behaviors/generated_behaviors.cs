@@ -18,11 +18,14 @@ namespace behaviac
 		public State_bt_FSM_Ctrl_node1()
 		{
 			this.m_bIsEndState = false;
+			method_params = null;
 		}
 		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
 		{
+			AgentMetaVisitor.ExecuteMethod(pAgent, "WaitForOrder", method_params);
 			return behaviac.EBTStatus.BT_RUNNING;
 		}
+		object[] method_params;
 	}
 
 	[behaviac.GeneratedTypeMetaInfo()]

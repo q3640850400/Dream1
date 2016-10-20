@@ -22,7 +22,8 @@ public class UI_Ctrl : MonoBehaviour {
 	}
 	//行为树测试
 	public void test(){
-		Singleton<FSM_Ctrl>.Instance.Status = 1;
+		//Singleton<FSM_Ctrl>.Instance.Status = 1;
+		//page_constructions.SetActive (false);
 	}
 	//打开建筑页面
 	public void open_page_constructions(){
@@ -40,6 +41,7 @@ public class UI_Ctrl : MonoBehaviour {
 		}
 	}
 	public void getBuilding(string Name){
+		page_constructions.SetActive (false);
 		Singleton<FSM_Ctrl>.Instance.Status = 2;
 		Singleton<FSM_Ctrl>.Instance.Name = Name;
 //		Singleton<UI_Ctrl>.Instance.ReadyBuild = GameObject.Instantiate (Resources.Load(ConstructionPrefabPath + name,typeof(GameObject)), new Vector3 (0f, 0f, 0f), Quaternion.identity) as GameObject;

@@ -211,6 +211,7 @@ namespace behaviac
 			meta.RegisterMethod(2092435623, new CAgentMethodVoid(delegate(Agent self) { AgentMetaVisitor.ExecuteMethod(self, "Enter_ReadyConstruct", null); }));
 			meta.RegisterMethod(1017098902, new CAgentMethodVoid(delegate(Agent self) { AgentMetaVisitor.ExecuteMethod(self, "ReadyConstruct", null); }));
 			meta.RegisterMethod(3546126339, new CAgentMethodVoid(delegate(Agent self) { AgentMetaVisitor.ExecuteMethod(self, "Selecting", null); }));
+			meta.RegisterMethod(2951813410, new CAgentMethodVoid(delegate(Agent self) { AgentMetaVisitor.ExecuteMethod(self, "WaitForOrder", null); }));
 			meta.RegisterMethod(1045109914, new CAgentStaticMethodVoid<string>(delegate(string param0) { FSM_Ctrl.LogMessage(param0); }));
 			meta.RegisterMethod(2521019022, new CMethod_behaviac_Agent_VectorAdd());
 			meta.RegisterMethod(2306090221, new CMethod_behaviac_Agent_VectorClear());
