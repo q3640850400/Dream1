@@ -28,6 +28,9 @@ public class FSM_Ctrl : behaviac.Agent
 	public string Name;
 	LayerMask LandMask=1<<8;
 
+	private Vector3 preMousePos;
+	private Vector3 curMousePos;
+
 	[behaviac.MemberMetaInfo("Status", "Status")]
 	public int Status = 0;
 
@@ -44,7 +47,15 @@ public class FSM_Ctrl : behaviac.Agent
 	{
 		// Write your logic codes here.
 		if (Input.GetMouseButtonDown (0) && !isMouseOnUI ()) {
-			Status = 1;
+			//TargetRect.Instance.transform.position = Input.mousePosition;
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hitinfo;
+			if(Physics.Raycast(ray,out hitinfo,1000,LandMask)){
+				preMousePos = hitinfo.point + new Vector3 (0f, 0f, 5f);
+				TargetRect.Instance.gameObject.SetActive (true);
+				TargetRect.Instance.transform.position = preMousePos;
+				Status = 1;//跳到Selecting();
+			}
 		}
 
 	}
@@ -54,9 +65,19 @@ public class FSM_Ctrl : behaviac.Agent
 	{
 		// Write your logic codes here.
 		//Debug.Log ("请选择单位");
-		Vector2[] linePoints=new Vector2[]{new Vector2(0f,0f),new Vector2(50f,50f)};
-		VectorLine line = new VectorLine ("Line", linePoints, null, 2.0f);
-
+		//TargetRect.Instance.transform.position = Input.mousePosition;
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hitinfo;
+		if(Physics.Raycast(ray,out hitinfo,1000,LandMask)){
+			curMousePos = hitinfo.point + new Vector3 (0f, 0f, 5f);
+			TargetRect.Instance.rect.localScale=new Vector3(preMousePos.x-curMousePos.x,preMousePos.y-curMousePos.y,1.0f);
+			Debug.Log ("pre:" + preMousePos + "  cur:" + curMousePos);
+		}
+		if (Input.GetMouseButtonUp (0)) {
+			Status = 0;
+			TargetRect.Instance.gameObject.SetActive (false);
+		}
+		//TargetRect.Instance.rect.localScale=new Vector3();
 	}
 
 	[behaviac.MethodMetaInfo("Enter_ReadyConstruct", "Enter_ReadyConstruct")]

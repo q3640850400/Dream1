@@ -44,5 +44,19 @@
       <Method Name="ReadyConstruct" DisplayName="ReadyConstruct" Desc="ReadyConstruct" ReturnType="void" Class="FSM_Ctrl" />
       <Method Name="Constructing" DisplayName="Constructing" Desc="Constructing" ReturnType="void" Class="FSM_Ctrl" />
     </agent>
+    <agent classfullname="Unit" base="behaviac::Agent" DisplayName="Unit" Desc="单位超类" IsRefType="true">
+      <Member Name="CAMP" DisplayName="CAMP" Desc="阵营" Type="int" Class="Unit" Public="true" />
+      <Member Name="COLOR" DisplayName="COLOR" Desc="涂色" Type="int" Class="Unit" Public="true" />
+      <Member Name="CLASS" DisplayName="CLASS" Desc="类别：建筑、兵种" Type="int" Class="Unit" Public="true" />
+      <Member Name="ATK" DisplayName="ATK" Desc="ATK" Type="float" Class="Unit" Public="true" />
+      <Member Name="DEF" DisplayName="DEF" Desc="DEF" Type="float" Class="Unit" Public="true" />
+      <Member Name="maxLife" DisplayName="maxLife" Desc="maxLife" Type="float" Class="Unit" Public="true" />
+      <Member Name="curLife" DisplayName="curLife" Desc="curLife" Type="int" Class="Unit" Public="true" />
+      <Member Name="canMove" DisplayName="canMove" Desc="canMove" Type="bool" Class="Unit" Public="true" />
+      <Member Name="canAttk" DisplayName="canAttk" Desc="canAttk" Type="bool" Class="Unit" Public="true" />
+      <Member Name="maxMovSpd" DisplayName="maxMovSpd" Desc="maxMovSpd" Type="float" Class="Unit" Public="true" />
+      <Member Name="curMovSpd" DisplayName="curMovSpd" Desc="curMovSpd" Type="float" Class="Unit" Public="true" />
+      <Member Name="rgATK" DisplayName="rgATK" Desc="攻击距离" Type="float" Class="Unit" Public="true" />
+    </agent>
   </agents>
 </metas>

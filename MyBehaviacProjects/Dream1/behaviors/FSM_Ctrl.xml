@@ -12,8 +12,9 @@
         <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="4" Operator="Equal" Opl="int Self.FSM_Ctrl::Status" Opr1="&quot;&quot;" Opr2="const int 1" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
         <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="5" Operator="Equal" Opl="int Self.FSM_Ctrl::Status" Opr1="&quot;&quot;" Opr2="const int 2" PrefabAttachmentId="-1" TargetFSMNodeId="3" />
       </Node>
-      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="2" IsEndState="false" Method="Self.FSM_Ctrl::Selecting()" Name="选兵状态(Selecting)" PrefabName="" PrefabNodeId="-1" ScreenLocationX="410.9636" ScreenLocationY="-131.7328">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="2" IsEndState="false" Method="Self.FSM_Ctrl::Selecting()" Name="选兵状态(Selecting)" PrefabName="" PrefabNodeId="-1" ScreenLocationX="474.1116" ScreenLocationY="-118.005">
         <Comment Background="NoColor" Text="" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="13" Operator="Equal" Opl="int Self.FSM_Ctrl::Status" Opr1="&quot;&quot;" Opr2="const int 0" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
       </Node>
       <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="3" IsEndState="false" Method="Self.FSM_Ctrl::ReadyConstruct()" Name="准备建筑状态(ReadyConstruct)" PrefabName="" PrefabNodeId="-1" ScreenLocationX="427" ScreenLocationY="7.821418">
         <Comment Background="NoColor" Text="" />

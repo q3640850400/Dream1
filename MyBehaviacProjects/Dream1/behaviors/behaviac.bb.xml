@@ -5,15 +5,26 @@
   <agents>
     <agent type="FSM_Ctrl" base="behaviac::Agent" disp="FSM_Ctrl" desc="FSM_Ctrl">
       <properties>
-        <property name="Status" type="System.Int32" classname="FSM_Ctrl" defaultvalue="0" static="false" public="true" readonly="false" disp="Status" desc="Status" />
-        <property name="MouseStatus" type="System.Int32" classname="FSM_Ctrl" defaultvalue="0" static="false" public="true" readonly="false" disp="MouseStatus" desc="MouseStatus" />
         <property name="isConAva" type="System.Boolean" classname="FSM_Ctrl" defaultvalue="false" static="false" public="true" readonly="false" disp="isConAva" desc="isConAva" />
+        <property name="MouseStatus" type="System.Int32" classname="FSM_Ctrl" defaultvalue="0" static="false" public="true" readonly="false" disp="MouseStatus" desc="MouseStatus" />
+        <property name="Status" type="System.Int32" classname="FSM_Ctrl" defaultvalue="0" static="false" public="true" readonly="false" disp="Status" desc="Status" />
       </properties>
-      <methods>
-        <method name="ReadyConstruct" returntype="System.Void" classname="FSM_Ctrl" static="false" public="false" istask="false" disp="ReadyConstruct" desc="ReadyConstruct" />
-        <method name="Selecting" returntype="System.Void" classname="FSM_Ctrl" static="false" public="false" istask="false" disp="Selecting" desc="Selecting" />
-        <method name="Constructing" returntype="System.Void" classname="FSM_Ctrl" static="false" public="false" istask="false" disp="Constructing" desc="Constructing" />
-      </methods>
+    </agent>
+    <agent type="Unit" base="behaviac::Agent" disp="Unit" desc="单位超类">
+      <properties>
+        <property name="CAMP" type="System.Int32" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="CAMP" desc="阵营" />
+        <property name="COLOR" type="System.Int32" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="COLOR" desc="涂色" />
+        <property name="CLASS" type="System.Int32" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="CLASS" desc="类别：建筑、兵种" />
+        <property name="ATK" type="System.Single" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="ATK" desc="ATK" />
+        <property name="DEF" type="System.Single" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="DEF" desc="DEF" />
+        <property name="maxLife" type="System.Single" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="maxLife" desc="maxLife" />
+        <property name="curLife" type="System.Int32" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="curLife" desc="curLife" />
+        <property name="canMove" type="System.Boolean" classname="Unit" defaultvalue="false" static="false" public="true" readonly="false" disp="canMove" desc="canMove" />
+        <property name="canAttk" type="System.Boolean" classname="Unit" defaultvalue="false" static="false" public="true" readonly="false" disp="canAttk" desc="canAttk" />
+        <property name="maxMovSpd" type="System.Single" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="maxMovSpd" desc="maxMovSpd" />
+        <property name="curMovSpd" type="System.Single" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="curMovSpd" desc="curMovSpd" />
+        <property name="rgATK" type="System.Single" classname="Unit" defaultvalue="0" static="false" public="true" readonly="false" disp="rgATK" desc="攻击距离" />
+      </properties>
     </agent>
   </agents>
 </meta>

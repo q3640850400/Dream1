@@ -223,6 +223,7 @@ namespace behaviac
 			AgentMeta.Register<behaviac.EBTStatus>("behaviac.EBTStatus");
 			AgentMeta.Register<FSM_Ctrl>("FSM_Ctrl");
 			AgentMeta.Register<System.Object>("System.Object");
+			AgentMeta.Register<Unit>("Unit");
 
 		}
 
@@ -232,6 +233,7 @@ namespace behaviac
 			AgentMeta.UnRegister<behaviac.EBTStatus>("behaviac.EBTStatus");
 			AgentMeta.UnRegister<FSM_Ctrl>("FSM_Ctrl");
 			AgentMeta.UnRegister<System.Object>("System.Object");
+			AgentMeta.UnRegister<Unit>("Unit");
 		}
 	}
 }

@@ -23,7 +23,8 @@ public class BattleFieldInit : MonoBehaviour {
 		Transform p = GameObject.Find ("BattleField").transform;
 		for (int xt = 0; xt < x; xt++) {
 			for (int yt = 0; yt < y; yt++) {
-				int k = Random.Range (0, 7);
+				//int k = Random.Range (0, 7);
+				int k=0;
 				GameObject l = GameObject.Instantiate (land[k], new Vector3 (xt * 0.64f, yt * 0.64f, 0f), Quaternion.identity) as GameObject;
 				l.transform.SetParent (p);
 				//l.AddComponent<MeshCollider> ();
