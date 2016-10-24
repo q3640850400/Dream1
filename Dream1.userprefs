@@ -1,20 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CTRL\Game_Ctrl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CTRL\R_message.cs">
     <Files>
-      <File FileName="Assets\MiniMap.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CTRL\Mouse_Ctrl.cs" Line="1" Column="1" />
-      <File FileName="Assets\BattleFieldInit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CTRL\BehaviacSystem.cs" Line="1" Column="1" />
-      <File FileName="Assets\Model.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Unit\JiQiangBing.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CTRL\BehaviacFileManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CTRL\UI_Ctrl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CTRL\Game_Ctrl.cs" Line="13" Column="3" />
-      <File FileName="Assets\Plugins\VectrosityScripts\VisibilityControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CTRL\R_message.cs" Line="5" Column="2" />
       <File FileName="Assets\Scripts\behaviac_generated\types\FSM_Ctrl.cs" Line="1" Column="1" />
+      <File FileName="Assets\MiniMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\BattleFieldInit.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CTRL\UI_Ctrl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CTRL\Game_Ctrl.cs" Line="1" Column="1" />
       <File FileName="Assets\TargetRect.cs" Line="1" Column="1" />
-      <File FileName="f:\MyUnityProjects\Dream1\Assets\Scripts\behaviac\runtime\BehaviorTree\BehaviorTree_task.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\behaviac_generated\types\Unit.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CTRL\BehaviacSystem.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

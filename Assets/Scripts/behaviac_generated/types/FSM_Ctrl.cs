@@ -15,7 +15,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
-using Vectrosity;
 
 [behaviac.TypeMetaInfo("FSM_Ctrl", "FSM_Ctrl")]
 public class FSM_Ctrl : behaviac.Agent

@@ -8,42 +8,26 @@ using System.Collections.Generic;
 [behaviac.TypeMetaInfo("Unit", "单位超类")]
 public class Unit : behaviac.Agent
 {
-	// properties
+	// methods
 
-	[behaviac.MemberMetaInfo("CAMP", "阵营")]
-	public int CAMP = 0;
+	[behaviac.MethodMetaInfo("SearchEnemy", "SearchEnemy")]
+	private bool SearchEnemy()
+	{
+		// Write your logic codes here.
 
-	[behaviac.MemberMetaInfo("COLOR", "涂色")]
-	public int COLOR = 0;
+		return false;
+	}
 
-	[behaviac.MemberMetaInfo("CLASS", "类别：建筑、兵种")]
-	public int CLASS = 0;
+	[behaviac.MethodMetaInfo("Attack", "Attack")]
+	private void Attack()
+	{
+		// Write your logic codes here.
+	}
 
-	[behaviac.MemberMetaInfo("ATK", "ATK")]
-	public float ATK = 0;
-
-	[behaviac.MemberMetaInfo("DEF", "DEF")]
-	public float DEF = 0;
-
-	[behaviac.MemberMetaInfo("maxLife", "maxLife")]
-	public float maxLife = 0;
-
-	[behaviac.MemberMetaInfo("curLife", "curLife")]
-	public int curLife = 0;
-
-	[behaviac.MemberMetaInfo("canMove", "canMove")]
-	public bool canMove = false;
-
-	[behaviac.MemberMetaInfo("canAttk", "canAttk")]
-	public bool canAttk = false;
-
-	[behaviac.MemberMetaInfo("maxMovSpd", "maxMovSpd")]
-	public float maxMovSpd = 0;
-
-	[behaviac.MemberMetaInfo("curMovSpd", "curMovSpd")]
-	public float curMovSpd = 0;
-
-	[behaviac.MemberMetaInfo("rgATK", "攻击距离")]
-	public float rgATK = 0;
+	[behaviac.MethodMetaInfo("GoToDes", "GoToDes")]
+	private void GoToDes()
+	{
+		// Write your logic codes here.
+	}
 
 }
