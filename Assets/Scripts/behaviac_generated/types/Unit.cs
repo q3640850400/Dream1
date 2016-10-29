@@ -3,31 +3,73 @@
 // implement the methods of the agent class if necessary!
 // ---------------------------------------------------------------------
 
+using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
-[behaviac.TypeMetaInfo("Unit", "单位超类")]
+[behaviac.TypeMetaInfo("Unit", "Unit")]
 public class Unit : behaviac.Agent
 {
+	private UnitProperty _UnitProperty=null;
+	public string behaviorTree 		= "FSM_Unit_ForceATK";
+	protected bool btloadResult 	= false;
+
+	// properties
+	[behaviac.MemberMetaInfo("isEnmyFound", "isEnmyFound")]
+	public bool isEnmyFound = false;
+	
+	[behaviac.MemberMetaInfo("isGo", "isGo")]
+	public bool isGo = false;
+	
 	// methods
 
-	[behaviac.MethodMetaInfo("SearchEnemy", "SearchEnemy")]
-	private bool SearchEnemy()
+	[behaviac.MethodMetaInfo("Idle", "Idle")]
+	public void Idle()
 	{
 		// Write your logic codes here.
+		
+	}
 
-		return false;
+	[behaviac.MethodMetaInfo("GotoDes", "GotoDes")]
+	public void GotoDes()
+	{
+		// Write your logic codes here.
 	}
 
 	[behaviac.MethodMetaInfo("Attack", "Attack")]
-	private void Attack()
+	public void Attack()
 	{
 		// Write your logic codes here.
 	}
+	private bool ArriveDes(){
+		return true;
+	}
+	private bool SearchEnmy(){
+		return true;
+	}
 
-	[behaviac.MethodMetaInfo("GoToDes", "GoToDes")]
-	private void GoToDes()
-	{
-		// Write your logic codes here.
+	void Start () {
+		init ();
+	}
+	// Update is called once per frame
+	void Update () {
+		btexec ();
+	}
+	public bool init(){
+		//BehaviacSystem BS = new BehaviacSystem ();
+		//BS.Init ();
+		//_UnitProperty = gameObject.GetComponent<UnitProperty> ();
+		//Debug.Log (_UnitProperty.LifeMax);
+		if(behaviorTree.Length > 0)
+		{
+			btloadResult = btload(behaviorTree, true);
+			if(btloadResult)
+				btsetcurrent(behaviorTree);
+			else
+				Debug.LogError("Behavior tree data load failed! " + behaviorTree);
+		}
+		return true;
 	}
 
 }

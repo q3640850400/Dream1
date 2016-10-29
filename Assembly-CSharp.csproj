@@ -53,7 +53,6 @@
      <Compile Include="Assets\Scripts\CTRL\Game_Ctrl.cs" />
      <Compile Include="Assets\Scripts\CTRL\Mouse_Ctrl.cs" />
      <Compile Include="Assets\Scripts\CTRL\R_message.cs" />
-     <Compile Include="Assets\Scripts\CTRL\Singleton.cs" />
      <Compile Include="Assets\Scripts\CTRL\UI_Ctrl.cs" />
      <Compile Include="Assets\Scripts\Unit\JiQiangBing.cs" />
      <Compile Include="Assets\Scripts\behaviac\runtime\Agent\Agent.cs" />
@@ -138,6 +137,7 @@
      <Compile Include="Assets\Scripts\behaviac_generated\types\FSM_Ctrl.cs" />
      <Compile Include="Assets\Scripts\behaviac_generated\types\Unit.cs" />
      <Compile Include="Assets\TargetRect.cs" />
+     <Compile Include="Assets\UnitProperty.cs" />
      <None Include="Assets\behaviac\FSM_Ctrl_Meta.xml" />
      <None Include="Assets\Scripts\behaviac\runtime\readme.txt" />
      <None Include="Assets\Scripts\behaviac\runtime\version.txt" />
@@ -147,6 +147,9 @@
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>D:/Unity5.3/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="arcalet">
+ <HintPath>D:/MyUnityProjects/Dream1/Assets/Plugins/arcalet.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

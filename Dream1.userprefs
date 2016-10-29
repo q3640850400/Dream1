@@ -1,16 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CTRL\R_message.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\UnitProperty.cs">
     <Files>
-      <File FileName="Assets\Scripts\CTRL\R_message.cs" Line="5" Column="2" />
-      <File FileName="Assets\Scripts\behaviac_generated\types\FSM_Ctrl.cs" Line="1" Column="1" />
-      <File FileName="Assets\MiniMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CTRL\UI_Ctrl.cs" Line="16" Column="3" />
+      <File FileName="Assets\Scripts\CTRL\Game_Ctrl.cs" Line="51" Column="3" />
+      <File FileName="Assets\Scripts\CTRL\Mouse_Ctrl.cs" Line="20" Column="6" />
+      <File FileName="Assets\Scripts\CTRL\R_message.cs" Line="1" Column="1" />
+      <File FileName="Assets\MiniMap.cs" Line="22" Column="52" />
       <File FileName="Assets\BattleFieldInit.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CTRL\UI_Ctrl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CTRL\Game_Ctrl.cs" Line="1" Column="1" />
       <File FileName="Assets\TargetRect.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\behaviac_generated\types\Unit.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CTRL\BehaviacSystem.cs" Line="1" Column="1" />
+      <File FileName="Assets\Model.cs" Line="5" Column="38" />
+      <File FileName="Assets\UnitProperty.cs" Line="15" Column="30" />
+      <File FileName="Assets\Scripts\behaviac_generated\types\FSM_Ctrl.cs" Line="42" Column="14" />
+      <File FileName="Assets\Scripts\behaviac_generated\types\Unit.cs" Line="37" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

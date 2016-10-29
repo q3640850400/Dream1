@@ -44,10 +44,12 @@
       <Method Name="ReadyConstruct" DisplayName="ReadyConstruct" Desc="ReadyConstruct" ReturnType="void" Class="FSM_Ctrl" />
       <Method Name="Constructing" DisplayName="Constructing" Desc="Constructing" ReturnType="void" Class="FSM_Ctrl" />
     </agent>
-    <agent classfullname="Unit" base="behaviac::Agent" DisplayName="Unit" Desc="单位超类" IsRefType="true">
-      <Method Name="SearchEnemy" DisplayName="SearchEnemy" Desc="SearchEnemy" ReturnType="bool" Class="Unit" />
-      <Method Name="Attack" DisplayName="Attack" Desc="Attack" ReturnType="void" Class="Unit" />
-      <Method Name="GoToDes" DisplayName="GoToDes" Desc="GoToDes" ReturnType="void" Class="Unit" />
+    <agent classfullname="Unit" base="behaviac::Agent" DisplayName="Unit" Desc="Unit" IsRefType="true">
+      <Member Name="isEnmyFound" DisplayName="isEnmyFound" Desc="isEnmyFound" Type="bool" Class="Unit" Public="true" />
+      <Member Name="isGo" DisplayName="isGo" Desc="isGo" Type="bool" Class="Unit" Public="true" />
+      <Method Name="Idle" DisplayName="Idle" Desc="Idle" ReturnType="void" Class="Unit" Public="true" />
+      <Method Name="GotoDes" DisplayName="GotoDes" Desc="GotoDes" ReturnType="void" Class="Unit" Public="true" />
+      <Method Name="Attack" DisplayName="Attack" Desc="Attack" ReturnType="void" Class="Unit" Public="true" />
     </agent>
   </agents>
 </metas>

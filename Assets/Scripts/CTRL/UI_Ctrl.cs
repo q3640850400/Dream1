@@ -3,14 +3,19 @@ using System.Collections;
 
 public class UI_Ctrl : MonoBehaviour {
 	//Mouse_Ctrl m=null;
+	public static UI_Ctrl Instance=null;
+
 	GameObject page_constructions;
 	//string ConstructionPrefabPath="单位/Prefab/";
 	//GameObject ReadyBuild = null;//准备建造的建筑
 	//public string ConstructionPrefabPath="/Resources/单位/Prefab/";
 
 	// Use this for initialization
+	void Awake(){
+		Instance = this;
+	}
 	void Start () {
-		Singleton<FSM_Ctrl>.Instance.Status = 0;
+		FSM_Ctrl.Instance.Status = 0;
 		page_constructions=GameObject.Find("建筑页面");
 		//m = GameObject.Find ("Mouse_Ctrl").GetComponent<Mouse_Ctrl> ();
 		page_constructions.SetActive (false);
@@ -22,7 +27,7 @@ public class UI_Ctrl : MonoBehaviour {
 	}
 	//行为树测试
 	public void test(){
-		//Singleton<FSM_Ctrl>.Instance.Status = 1;
+		//FSM_Ctrl.Instance.Status = 1;
 		//page_constructions.SetActive (false);
 	}
 	//打开建筑页面
@@ -42,8 +47,8 @@ public class UI_Ctrl : MonoBehaviour {
 	}
 	public void getBuilding(string Name){
 		page_constructions.SetActive (false);
-		Singleton<FSM_Ctrl>.Instance.Status = 2;
-		Singleton<FSM_Ctrl>.Instance.Name = Name;
+		FSM_Ctrl.Instance.Status = 2;
+		FSM_Ctrl.Instance.Name = Name;
 //		Singleton<UI_Ctrl>.Instance.ReadyBuild = GameObject.Instantiate (Resources.Load(ConstructionPrefabPath + name,typeof(GameObject)), new Vector3 (0f, 0f, 0f), Quaternion.identity) as GameObject;
 //		if (Singleton<UI_Ctrl>.Instance.ReadyBuild != null) {
 //			Debug.Log ("Load Building Success");

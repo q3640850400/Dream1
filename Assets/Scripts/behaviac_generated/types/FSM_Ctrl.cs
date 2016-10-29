@@ -19,7 +19,7 @@ using UnityEngine.EventSystems;
 [behaviac.TypeMetaInfo("FSM_Ctrl", "FSM_Ctrl")]
 public class FSM_Ctrl : behaviac.Agent
 {
-	// properties
+	public static FSM_Ctrl Instance=null;
 	public string behaviorTree 		= "FSM_Ctrl";
 	protected bool btloadResult 	= false;
 	string ConstructionPrefabPath="单位/Prefab/";
@@ -27,9 +27,22 @@ public class FSM_Ctrl : behaviac.Agent
 	public string Name;
 	LayerMask LandMask=1<<8;
 
-	private Vector3 preMousePos;
-	private Vector3 curMousePos;
+	private Vector3 preMousePos;//鼠标起始位置
+	private Vector3 curMousePos;//鼠标结束位置
+	private Rect SelectRect;//选择框范围，用来判断单位是否在框内
+	private Vector3 lastMosPos=new Vector3(0f,0f,0f);
+	public float iniMosPosDis=0.5f;//鼠标敏感距离
+	private float preMouseDownDT=0f;//鼠标按下时间(无用)
+	public float initMouseDownDT=0.5f;//预设鼠标按下时间(无用)
+	private bool isMove=false;//是否施加了一个移动指令(无用)
 
+	void Awake(){
+		Instance = this;
+		BehaviacSystem BS = new BehaviacSystem ();
+		BS.Init ();
+	}
+
+	// properties
 	[behaviac.MemberMetaInfo("Status", "Status")]
 	public int Status = 0;
 
@@ -45,6 +58,7 @@ public class FSM_Ctrl : behaviac.Agent
 	private void WaitForOrder()
 	{
 		// Write your logic codes here.
+		//如果鼠标被按下
 		if (Input.GetMouseButtonDown (0) && !isMouseOnUI ()) {
 			//TargetRect.Instance.transform.position = Input.mousePosition;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -58,25 +72,54 @@ public class FSM_Ctrl : behaviac.Agent
 		}
 
 	}
-
+	//大部分的控制指令在这里实现
 	[behaviac.MethodMetaInfo("Selecting", "Selecting")]
 	private void Selecting()
 	{
-		// Write your logic codes here.
-		//Debug.Log ("请选择单位");
-		//TargetRect.Instance.transform.position = Input.mousePosition;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitinfo;
 		if(Physics.Raycast(ray,out hitinfo,1000,LandMask)){
 			curMousePos = hitinfo.point + new Vector3 (0f, 0f, 5f);
 			TargetRect.Instance.rect.localScale=new Vector3(preMousePos.x-curMousePos.x,preMousePos.y-curMousePos.y,1.0f);
-			Debug.Log ("pre:" + preMousePos + "  cur:" + curMousePos);
+			//Debug.Log ("pre:" + preMousePos + "  cur:" + curMousePos);
 		}
 		if (Input.GetMouseButtonUp (0)) {
+			//如果为点击，就判断与前一次点击的距离，如果为双击，就进攻，单击，就移动
+			float MosDis=Vector3.Distance (preMousePos, curMousePos);
+			if (MosDis<=iniMosPosDis) {
+				float LasMosDis=Vector3.Distance (lastMosPos, curMousePos);
+				if (LasMosDis <= iniMosPosDis) {
+					Debug.Log ("进攻！");
+					foreach(GameObject g in Game_Ctrl.Instance.SelectUnitList){
+						int id=g.GetComponent<UnitProperty> ().UnitId;
+						string msg = "Strike:1/1/"+id+"/"+curMousePos.x+"/"+curMousePos.y+"/"+curMousePos.z;
+						Game_Ctrl.Instance.OffGameMessageIn (msg,0);
+					}
+
+				} else {
+					Debug.Log ("移动！");
+				}
+				lastMosPos = curMousePos;
+				
+			}else {
+				Debug.Log ("选择！");
+				lastMosPos =new Vector3 (0f, 0f, 0f);
+				//Vector2 LDRectP = new Vector2 (preMousePos.x <= curMousePos.x ? preMousePos.x : curMousePos.x, preMousePos.y <= curMousePos.y ? preMousePos.y : curMousePos.y);
+				SelectRect=//根据选择框画一个矩形，判断单位是否在矩形内
+					new Rect(preMousePos.x <= curMousePos.x ? preMousePos.x : curMousePos.x,preMousePos.y <= curMousePos.y ? preMousePos.y : curMousePos.y,
+						Mathf.Abs(curMousePos.x-preMousePos.x),Mathf.Abs(curMousePos.y-preMousePos.y));
+				//Debug.Log(SelectRect);
+				Game_Ctrl.Instance.SelectUnitList.Clear ();//先清空选择列表
+				foreach(GameObject g in Game_Ctrl.Instance.MyUnitList){
+					Vector2 gp = new Vector2 (g.transform.position.x, g.transform.position.y);
+					if (SelectRect.Contains (gp)) {
+						Game_Ctrl.Instance.SelectUnitList.Add (g);
+					}
+				}
+			}
 			Status = 0;
 			TargetRect.Instance.gameObject.SetActive (false);
 		}
-		//TargetRect.Instance.rect.localScale=new Vector3();
 	}
 
 	[behaviac.MethodMetaInfo("Enter_ReadyConstruct", "Enter_ReadyConstruct")]
@@ -138,9 +181,7 @@ public class FSM_Ctrl : behaviac.Agent
 			return false;
 	}
 	public bool init(){
-		BehaviacSystem BS = new BehaviacSystem ();
-		BS.Init ();
-		Debug.Log("lol");
+		
 		//behaviac.Agent.BindInstance (this, "FSM_Ctrl0");
 		if(behaviorTree.Length > 0)
 		{

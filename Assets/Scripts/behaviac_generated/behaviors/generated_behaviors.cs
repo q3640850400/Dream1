@@ -392,4 +392,220 @@ namespace behaviac
 		}
 	}
 
+	// Source file: FSM_Unit_ForceATK
+
+	[behaviac.GeneratedTypeMetaInfo()]
+	class State_bt_FSM_Unit_ForceATK_node1 : behaviac.State
+	{
+		public State_bt_FSM_Unit_ForceATK_node1()
+		{
+			this.m_bIsEndState = false;
+		}
+		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
+		{
+			((Unit)pAgent).GotoDes();
+			return behaviac.EBTStatus.BT_RUNNING;
+		}
+	}
+
+	[behaviac.GeneratedTypeMetaInfo()]
+	class Transition_bt_FSM_Unit_ForceATK_attach3 : behaviac.Transition
+	{
+		public Transition_bt_FSM_Unit_ForceATK_attach3()
+		{
+			this.TargetStateId = 2;
+		}
+		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
+		{
+			EBTStatus result = EBTStatus.BT_SUCCESS;
+			bool opl = ((Unit)pAgent).isEnmyFound;
+			bool opr2 = true;
+			bool op = (opl == opr2);
+			if (!op)
+				result = EBTStatus.BT_FAILURE;
+			return result;
+		}
+	}
+
+	[behaviac.GeneratedTypeMetaInfo()]
+	class State_bt_FSM_Unit_ForceATK_node2 : behaviac.State
+	{
+		public State_bt_FSM_Unit_ForceATK_node2()
+		{
+			this.m_bIsEndState = false;
+		}
+		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
+		{
+			((Unit)pAgent).Attack();
+			return behaviac.EBTStatus.BT_RUNNING;
+		}
+	}
+
+	[behaviac.GeneratedTypeMetaInfo()]
+	class Transition_bt_FSM_Unit_ForceATK_attach4 : behaviac.Transition
+	{
+		public Transition_bt_FSM_Unit_ForceATK_attach4()
+		{
+			this.TargetStateId = 5;
+		}
+		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
+		{
+			EBTStatus result = EBTStatus.BT_SUCCESS;
+			bool opl = ((Unit)pAgent).isEnmyFound;
+			bool opr2 = false;
+			bool op = (opl == opr2);
+			if (!op)
+				result = EBTStatus.BT_FAILURE;
+			return result;
+		}
+	}
+
+	[behaviac.GeneratedTypeMetaInfo()]
+	class State_bt_FSM_Unit_ForceATK_node5 : behaviac.State
+	{
+		public State_bt_FSM_Unit_ForceATK_node5()
+		{
+			this.m_bIsEndState = false;
+		}
+		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
+		{
+			((Unit)pAgent).Idle();
+			return behaviac.EBTStatus.BT_RUNNING;
+		}
+	}
+
+	[behaviac.GeneratedTypeMetaInfo()]
+	class Transition_bt_FSM_Unit_ForceATK_attach6 : behaviac.Transition
+	{
+		public Transition_bt_FSM_Unit_ForceATK_attach6()
+		{
+			this.TargetStateId = 1;
+		}
+		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
+		{
+			EBTStatus result = EBTStatus.BT_SUCCESS;
+			bool opl = ((Unit)pAgent).isGo;
+			bool opr2 = true;
+			bool op = (opl == opr2);
+			if (!op)
+				result = EBTStatus.BT_FAILURE;
+			return result;
+		}
+	}
+
+	[behaviac.GeneratedTypeMetaInfo()]
+	class Transition_bt_FSM_Unit_ForceATK_attach7 : behaviac.Transition
+	{
+		public Transition_bt_FSM_Unit_ForceATK_attach7()
+		{
+			this.TargetStateId = 2;
+		}
+		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
+		{
+			EBTStatus result = EBTStatus.BT_SUCCESS;
+			bool opl = ((Unit)pAgent).isEnmyFound;
+			bool opr2 = true;
+			bool op = (opl == opr2);
+			if (!op)
+				result = EBTStatus.BT_FAILURE;
+			return result;
+		}
+	}
+
+	public static class bt_FSM_Unit_ForceATK
+	{
+		public static bool build_behavior_tree(BehaviorTree bt)
+		{
+			bt.SetClassNameString("BehaviorTree");
+			bt.SetId(-1);
+			bt.SetName("FSM_Unit_ForceATK");
+			bt.IsFSM = true;
+#if !BEHAVIAC_RELEASE
+			bt.SetAgentType("Unit");
+#endif
+			// attachments
+			// children
+			{
+				FSM fsm = new FSM();
+				fsm.SetClassNameString("FSM");
+				fsm.SetId(-1);
+				fsm.InitialId = 5;
+#if !BEHAVIAC_RELEASE
+				fsm.SetAgentType("Unit");
+#endif
+				{
+					State_bt_FSM_Unit_ForceATK_node1 node1 = new State_bt_FSM_Unit_ForceATK_node1();
+					node1.SetClassNameString("State");
+					node1.SetId(1);
+#if !BEHAVIAC_RELEASE
+					node1.SetAgentType("Unit");
+#endif
+					// attachments
+					{
+						Transition_bt_FSM_Unit_ForceATK_attach3 attach3 = new Transition_bt_FSM_Unit_ForceATK_attach3();
+						attach3.SetClassNameString("Transition");
+						attach3.SetId(3);
+#if !BEHAVIAC_RELEASE
+						attach3.SetAgentType("Unit");
+#endif
+						node1.Attach(attach3, false, false, true);
+					}
+					fsm.AddChild(node1);
+					fsm.SetHasEvents(fsm.HasEvents() | node1.HasEvents());
+				}
+				{
+					State_bt_FSM_Unit_ForceATK_node2 node2 = new State_bt_FSM_Unit_ForceATK_node2();
+					node2.SetClassNameString("State");
+					node2.SetId(2);
+#if !BEHAVIAC_RELEASE
+					node2.SetAgentType("Unit");
+#endif
+					// attachments
+					{
+						Transition_bt_FSM_Unit_ForceATK_attach4 attach4 = new Transition_bt_FSM_Unit_ForceATK_attach4();
+						attach4.SetClassNameString("Transition");
+						attach4.SetId(4);
+#if !BEHAVIAC_RELEASE
+						attach4.SetAgentType("Unit");
+#endif
+						node2.Attach(attach4, false, false, true);
+					}
+					fsm.AddChild(node2);
+					fsm.SetHasEvents(fsm.HasEvents() | node2.HasEvents());
+				}
+				{
+					State_bt_FSM_Unit_ForceATK_node5 node5 = new State_bt_FSM_Unit_ForceATK_node5();
+					node5.SetClassNameString("State");
+					node5.SetId(5);
+#if !BEHAVIAC_RELEASE
+					node5.SetAgentType("Unit");
+#endif
+					// attachments
+					{
+						Transition_bt_FSM_Unit_ForceATK_attach6 attach6 = new Transition_bt_FSM_Unit_ForceATK_attach6();
+						attach6.SetClassNameString("Transition");
+						attach6.SetId(6);
+#if !BEHAVIAC_RELEASE
+						attach6.SetAgentType("Unit");
+#endif
+						node5.Attach(attach6, false, false, true);
+					}
+					{
+						Transition_bt_FSM_Unit_ForceATK_attach7 attach7 = new Transition_bt_FSM_Unit_ForceATK_attach7();
+						attach7.SetClassNameString("Transition");
+						attach7.SetId(7);
+#if !BEHAVIAC_RELEASE
+						attach7.SetAgentType("Unit");
+#endif
+						node5.Attach(attach7, false, false, true);
+					}
+					fsm.AddChild(node5);
+					fsm.SetHasEvents(fsm.HasEvents() | node5.HasEvents());
+				}
+				bt.AddChild(fsm);
+			}
+			return true;
+		}
+	}
+
 }
