@@ -39,7 +39,7 @@ TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -78,7 +78,6 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings:
   - buildTarget: Android
@@ -87,10 +86,8 @@ TextureImporter:
     compressionQuality: 0
     allowsAlphaSplitting: 0
   spriteSheet:
-    serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: DarkWorld1_0
+    - name: DarkWorld1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -100,10 +97,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_1
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_1
       rect:
         serializedVersion: 2
         x: 64
@@ -113,10 +112,14 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_2
+      outline:
+      - - {x: 22, y: 10}
+        - {x: 8, y: -5}
+        - {x: 6, y: -7}
+        - {x: 6, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 10}
+    - name: DarkWorld1_2
       rect:
         serializedVersion: 2
         x: 128
@@ -126,10 +129,16 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_3
+      outline:
+      - - {x: 0, y: 18}
+        - {x: -29, y: 18}
+        - {x: -32, y: 14}
+        - {x: -32, y: -32}
+        - {x: 2, y: -32}
+        - {x: 2, y: -27}
+        - {x: 10, y: -19}
+        - {x: 10, y: 7}
+    - name: DarkWorld1_3
       rect:
         serializedVersion: 2
         x: 192
@@ -139,10 +148,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_4
+      outline:
+      - - {x: -32, y: 10}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 3}
+        - {x: 29, y: 10}
+    - name: DarkWorld1_4
       rect:
         serializedVersion: 2
         x: 256
@@ -152,10 +164,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_5
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_5
       rect:
         serializedVersion: 2
         x: 320
@@ -165,10 +179,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_6
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_6
       rect:
         serializedVersion: 2
         x: 384
@@ -178,10 +194,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_7
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_7
       rect:
         serializedVersion: 2
         x: 448
@@ -191,10 +209,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_8
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_8
       rect:
         serializedVersion: 2
         x: 0
@@ -204,10 +224,14 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_9
+      outline:
+      - - {x: -9, y: 32}
+        - {x: -10, y: 31}
+        - {x: -10, y: 12}
+        - {x: 0, y: -2}
+        - {x: 32, y: -2}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_9
       rect:
         serializedVersion: 2
         x: 64
@@ -217,10 +241,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_10
+      outline:
+      - - {x: -2, y: 32}
+        - {x: -2, y: -29}
+        - {x: 5, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_10
       rect:
         serializedVersion: 2
         x: 128
@@ -230,10 +257,14 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_11
+      outline:
+      - - {x: -32, y: -32}
+        - {x: 27, y: -32}
+        - {x: 32, y: -13}
+        - {x: 32, y: 32}
+        - {x: -17, y: 32}
+        - {x: -32, y: 30}
+    - name: DarkWorld1_11
       rect:
         serializedVersion: 2
         x: 192
@@ -243,10 +274,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_12
+      outline:
+      - - {x: -29, y: 32}
+        - {x: -32, y: 16}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_12
       rect:
         serializedVersion: 2
         x: 256
@@ -256,10 +290,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_13
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_13
       rect:
         serializedVersion: 2
         x: 320
@@ -269,10 +305,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_14
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_14
       rect:
         serializedVersion: 2
         x: 384
@@ -282,10 +320,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_15
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_15
       rect:
         serializedVersion: 2
         x: 448
@@ -295,10 +335,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_16
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_16
       rect:
         serializedVersion: 2
         x: 0
@@ -308,10 +350,14 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_17
+      outline:
+      - - {x: 18, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -26}
+        - {x: -13, y: -26}
+        - {x: 5, y: -7}
+        - {x: 18, y: 8}
+    - name: DarkWorld1_17
       rect:
         serializedVersion: 2
         x: 64
@@ -321,10 +367,15 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_18
+      outline:
+      - - {x: 5, y: 32}
+        - {x: -32, y: 32}
+        - {x: -32, y: -27}
+        - {x: -20, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 4}
+        - {x: 27, y: 25}
+    - name: DarkWorld1_18
       rect:
         serializedVersion: 2
         x: 128
@@ -334,10 +385,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_19
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 10, y: -32}
+        - {x: 10, y: -3}
+        - {x: 2, y: 32}
+    - name: DarkWorld1_19
       rect:
         serializedVersion: 2
         x: 192
@@ -347,10 +401,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_20
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 5}
+        - {x: 2, y: 32}
+    - name: DarkWorld1_20
       rect:
         serializedVersion: 2
         x: 256
@@ -360,10 +417,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_21
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_21
       rect:
         serializedVersion: 2
         x: 320
@@ -373,10 +432,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_22
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_22
       rect:
         serializedVersion: 2
         x: 384
@@ -386,10 +447,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_23
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_23
       rect:
         serializedVersion: 2
         x: 448
@@ -399,10 +462,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_24
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_24
       rect:
         serializedVersion: 2
         x: 0
@@ -412,10 +477,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_25
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -10}
+        - {x: 5, y: -10}
+        - {x: 32, y: -7}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_25
       rect:
         serializedVersion: 2
         x: 64
@@ -425,10 +493,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_26
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -25}
+        - {x: -5, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_26
       rect:
         serializedVersion: 2
         x: 128
@@ -438,10 +509,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_27
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 20, y: -32}
+        - {x: 32, y: -12}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_27
       rect:
         serializedVersion: 2
         x: 192
@@ -451,10 +525,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_28
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_28
       rect:
         serializedVersion: 2
         x: 256
@@ -464,10 +540,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_29
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_29
       rect:
         serializedVersion: 2
         x: 320
@@ -477,10 +555,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_30
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_30
       rect:
         serializedVersion: 2
         x: 384
@@ -490,10 +570,12 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: DarkWorld1_31
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
+    - name: DarkWorld1_31
       rect:
         serializedVersion: 2
         x: 448
@@ -503,8 +585,11 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: -1
+      outline:
+      - - {x: -32, y: 32}
+        - {x: -32, y: -32}
+        - {x: 32, y: -32}
+        - {x: 32, y: 32}
     outline: []
   spritePackingTag: 
   userData: 

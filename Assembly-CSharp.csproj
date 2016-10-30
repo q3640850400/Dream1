@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BattleFieldInit.cs" />
+     <Compile Include="Assets\Init_Ctrl.cs" />
      <Compile Include="Assets\MiniMap.cs" />
      <Compile Include="Assets\Model.cs" />
+     <Compile Include="Assets\Scripts\CGraetText.cs" />
      <Compile Include="Assets\Scripts\CTRL\BehaviacFileManager.cs" />
      <Compile Include="Assets\Scripts\CTRL\BehaviacSystem.cs" />
      <Compile Include="Assets\Scripts\CTRL\Game_Ctrl.cs" />
@@ -136,11 +138,15 @@
      <Compile Include="Assets\Scripts\behaviac_generated\types\AgentProperties.cs" />
      <Compile Include="Assets\Scripts\behaviac_generated\types\FSM_Ctrl.cs" />
      <Compile Include="Assets\Scripts\behaviac_generated\types\Unit.cs" />
+     <Compile Include="Assets\Scripts\xml.cs" />
      <Compile Include="Assets\TargetRect.cs" />
      <Compile Include="Assets\UnitProperty.cs" />
      <None Include="Assets\behaviac\FSM_Ctrl_Meta.xml" />
+     <None Include="Assets\Scripts\TMXExc.txt" />
      <None Include="Assets\Scripts\behaviac\runtime\readme.txt" />
      <None Include="Assets\Scripts\behaviac\runtime\version.txt" />
+     <None Include="Assets\Resources\test1.txt" />
+     <None Include="Assets\Scripts\TMXExc2.txt" />
      <None Include="Assets\Scripts\behaviac\runtime\license.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity5.3/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

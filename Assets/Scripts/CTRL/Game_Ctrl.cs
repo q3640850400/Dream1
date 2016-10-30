@@ -71,7 +71,7 @@ public class Game_Ctrl : MonoBehaviour {
 	}
 	public void OffGameMessageIn(string msg,int delay)
 	{
-		Debug.Log (msg);
+		//Debug.Log (msg);
 		string[] s=msg.Split(':');
 		if (s[0]=="Strike") { // 进攻命令
 			// 讯息格式: "Strike:poid/userid/unitid/posx/posy/posz"
@@ -83,8 +83,8 @@ public class Game_Ctrl : MonoBehaviour {
 			float posy = float.Parse(p[4]);
 			float posz = float.Parse(p[5]);
 
-			foreach(GameObject g in MyUnitList){
-				g.GetComponent<UnitProperty> ().move (new Vector3 (posx, posy, posz));
+			foreach(GameObject g in SelectUnitList){
+				g.GetComponent<Unit> ().move (new Vector3 (posx, posy, posz));
 			}
 
 //			if (newPoid!=ag.poid) {			// 新进的玩家不是本地玩家

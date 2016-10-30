@@ -428,6 +428,25 @@ namespace behaviac
 	}
 
 	[behaviac.GeneratedTypeMetaInfo()]
+	class Transition_bt_FSM_Unit_ForceATK_attach8 : behaviac.Transition
+	{
+		public Transition_bt_FSM_Unit_ForceATK_attach8()
+		{
+			this.TargetStateId = 5;
+		}
+		protected override EBTStatus update_impl(behaviac.Agent pAgent, behaviac.EBTStatus childStatus)
+		{
+			EBTStatus result = EBTStatus.BT_SUCCESS;
+			bool opl = ((Unit)pAgent).isGo;
+			bool opr2 = false;
+			bool op = (opl == opr2);
+			if (!op)
+				result = EBTStatus.BT_FAILURE;
+			return result;
+		}
+	}
+
+	[behaviac.GeneratedTypeMetaInfo()]
 	class State_bt_FSM_Unit_ForceATK_node2 : behaviac.State
 	{
 		public State_bt_FSM_Unit_ForceATK_node2()
@@ -549,6 +568,15 @@ namespace behaviac
 						attach3.SetAgentType("Unit");
 #endif
 						node1.Attach(attach3, false, false, true);
+					}
+					{
+						Transition_bt_FSM_Unit_ForceATK_attach8 attach8 = new Transition_bt_FSM_Unit_ForceATK_attach8();
+						attach8.SetClassNameString("Transition");
+						attach8.SetId(8);
+#if !BEHAVIAC_RELEASE
+						attach8.SetAgentType("Unit");
+#endif
+						node1.Attach(attach8, false, false, true);
 					}
 					fsm.AddChild(node1);
 					fsm.SetHasEvents(fsm.HasEvents() | node1.HasEvents());

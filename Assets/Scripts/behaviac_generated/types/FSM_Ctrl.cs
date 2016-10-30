@@ -38,8 +38,7 @@ public class FSM_Ctrl : behaviac.Agent
 
 	void Awake(){
 		Instance = this;
-		BehaviacSystem BS = new BehaviacSystem ();
-		BS.Init ();
+
 	}
 
 	// properties
@@ -64,7 +63,7 @@ public class FSM_Ctrl : behaviac.Agent
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hitinfo;
 			if(Physics.Raycast(ray,out hitinfo,1000,LandMask)){
-				preMousePos = hitinfo.point + new Vector3 (0f, 0f, 5f);
+				preMousePos = hitinfo.point + new Vector3 (0f, 0f, 0f);
 				TargetRect.Instance.gameObject.SetActive (true);
 				TargetRect.Instance.transform.position = preMousePos;
 				Status = 1;//跳到Selecting();
@@ -79,7 +78,7 @@ public class FSM_Ctrl : behaviac.Agent
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hitinfo;
 		if(Physics.Raycast(ray,out hitinfo,1000,LandMask)){
-			curMousePos = hitinfo.point + new Vector3 (0f, 0f, 5f);
+			curMousePos = hitinfo.point + new Vector3 (0f, 0f, 0f);
 			TargetRect.Instance.rect.localScale=new Vector3(preMousePos.x-curMousePos.x,preMousePos.y-curMousePos.y,1.0f);
 			//Debug.Log ("pre:" + preMousePos + "  cur:" + curMousePos);
 		}
@@ -91,7 +90,7 @@ public class FSM_Ctrl : behaviac.Agent
 				if (LasMosDis <= iniMosPosDis) {
 					Debug.Log ("进攻！");
 					foreach(GameObject g in Game_Ctrl.Instance.SelectUnitList){
-						int id=g.GetComponent<UnitProperty> ().UnitId;
+						int id=g.GetComponent<Unit> ().UnitId;
 						string msg = "Strike:1/1/"+id+"/"+curMousePos.x+"/"+curMousePos.y+"/"+curMousePos.z;
 						Game_Ctrl.Instance.OffGameMessageIn (msg,0);
 					}

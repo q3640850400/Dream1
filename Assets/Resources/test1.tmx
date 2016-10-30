@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="20" height="20" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="DarkWorld1" tilewidth="64" tileheight="64" tilecount="32" columns="8">
+  <image source="DarkWorld1.png" width="512" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="1" type="int" value="5"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="g" type="int" value="4"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="地表" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJytlMFuxCAMRKEtSroShKpCSQ8o//+Xy2GedurzHkY4xoztweQjpfT1JnwuPBbqwlwoC0Nrkb+azf4M8fh+xbcvdOMdFl+0h7/qu1vuJhu+S2h2hthddhamfMRf5oevyl8Vm42LOrPlyNor2kcL+DjbTatm9XaLycpNz5fxwjfl361GVvrKhmo9FOOHD70P4RQus29b8W8Wn0O/Q7Hc3xl6RK9N9qm1ya7hfodi6edI/+eRebrlO9Nr9sgNH5rf1vNhddIr9q7c4Aj1TdV1y24G+mKe0B9tWnrNtvORs9p3N72YE2aSHqfdZ7yPzWKGzqIBvVLXabUx887HG2GfvMVyXKYH98Pdu37+jyC22b12O0Pf2PBF/abFoS/1xTfXzM9e/B/wrtEeTZhNZgC+HDjjfZRwjnfLTJSQE5v/G3zfC39vws/CEy1nF+o=
+  </data>
+ </layer>
+ <layer name="障碍物" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztkbEKwDAIRN0cHTP6/3/ZFhSOcEdD1/pAFHOKGrNh+Ibftson5J44wKy8Qw0jIE6h6Vrf5mDkgab7BcntOFjrcdd+63xWrzAOm0lp1UwIu5m6o7rHWy3uuoz/x/AfLhRaA0A=
+  </data>
+ </layer>
+</map>

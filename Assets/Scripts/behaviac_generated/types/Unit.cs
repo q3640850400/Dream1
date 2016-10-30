@@ -11,9 +11,26 @@ using UnityEngine.EventSystems;
 [behaviac.TypeMetaInfo("Unit", "Unit")]
 public class Unit : behaviac.Agent
 {
-	private UnitProperty _UnitProperty=null;
 	public string behaviorTree 		= "FSM_Unit_ForceATK";
 	protected bool btloadResult 	= false;
+
+	public int userid;
+	public int color;
+	public int UnitId;
+	public int Class;//种类：1兵种，2建筑
+	public float LifeMax;//最大生命
+	public float LifeCur;//当前生命
+	public float ATK=10f;//攻击力
+	public float DEF=1f;//防御力
+	public float MoveSPD=2f;//移动速度
+	public float ATKDT = 1f;//攻击间隔
+	public float TurnSPD=10f;//转身速度
+	public Vector3 Destination;
+	//public float Armor;
+	public bool canMove;
+	public bool canATK;
+	public bool Alive;
+
 
 	// properties
 	[behaviac.MemberMetaInfo("isEnmyFound", "isEnmyFound")]
@@ -34,6 +51,7 @@ public class Unit : behaviac.Agent
 	[behaviac.MethodMetaInfo("GotoDes", "GotoDes")]
 	public void GotoDes()
 	{
+		ArriveDes ();
 		// Write your logic codes here.
 	}
 
@@ -43,9 +61,32 @@ public class Unit : behaviac.Agent
 		// Write your logic codes here.
 	}
 	private bool ArriveDes(){
+		//A星寻路
+		//移动
+		ActTurn();
+		ActMove ();
 		return true;
 	}
+	void ActTurn(){
+		Vector3 targetdir = Destination - transform.position;
+		if (targetdir.magnitude <= 1) {
+			isGo = false;
+		} else {
+			transform.up=targetdir.normalized;
+		}
+
+	}
+	void ActMove(){
+		transform.Translate (transform.up*Time.deltaTime,Space.World);
+	}
 	private bool SearchEnmy(){
+		return true;
+	}
+	public bool move(Vector3 des){
+		Destination.x = des.x;
+		Destination.y = des.y;
+		Destination.z = 0f;
+		isGo = true;
 		return true;
 	}
 

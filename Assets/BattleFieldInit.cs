@@ -7,19 +7,74 @@ public class BattleFieldInit : MonoBehaviour {
 	public int y=100;
 	public List<GameObject> land=new List<GameObject>();
 	private Model _Model;
+	public string [][]MapArray;
+	public string [][]BlockArray;
+	public string MapName="test1";
 	// Use this for initialization
 	void Start () {
 		_Model = GameObject.Find ("Model").GetComponent<Model> ();
 		this.x = _Model.Mapx;
 		this.y = _Model.Mapy;
-		Init ();
+		//Init ();
+		ReadTMX();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+	void ReadTMX(){
+		
+//		TextAsset binAsset = Resources.Load ("test1_地表", typeof(TextAsset)) as TextAsset;		
+//		//读取每一行的内容
+//		string [] lineArray = binAsset.text.Split (new char[]{ '\r','\n' },System.StringSplitOptions.RemoveEmptyEntries);
+//		//读取行列数
+//		for (int i = 0; i < lineArray.Length; i++) {
+//			//Debug.Log(lineArray[i]);
+//			if (lineArray[i] == "[header]") {
+//				Debug.Log(lineArray[i]);
+//				string[] s1=lineArray[i+1].Split('=');
+//				this.x = int.Parse (s1[1]);
+//				string[] s2=lineArray[i+2].Split('=');
+//				this.y = int.Parse (s2[1]);
+//				break;
+//			}
+//		}
+		//读取行列数
+		//		for (int i = 0; i < lineArray.Length; i++) {
+		//			if (lineArray[i] == "[layer]") {
+		//				for(int j =0;j < this.y; j++)
+		//				{
+		//					MapArray[j] = lineArray[j+i+3].Split (',');
+		//				}
+		//				break;
+		//			}
+		//		}
+		//读取csv二进制文件
+		TextAsset binAsset1 = Resources.Load (MapName+"_地表", typeof(TextAsset)) as TextAsset;
+		TextAsset binAsset2 = Resources.Load (MapName+"_障碍物", typeof(TextAsset)) as TextAsset;
+		//读取每一行的内容
+		string [] lineArray1 = binAsset1.text.Split (new char[]{ '\r','\n' },System.StringSplitOptions.RemoveEmptyEntries);
+		string [] lineArray2 = binAsset2.text.Split (new char[]{ '\r','\n' },System.StringSplitOptions.RemoveEmptyEntries);
+		MapArray = new string [lineArray1.Length][];
+		BlockArray=new string [lineArray2.Length][];
+		for (int i = 0; i < lineArray1.Length; i++) {
+			MapArray[i] = lineArray1[i].Split (',');
+		}
+		for (int i = 0; i < lineArray1.Length; i++) {
+			BlockArray[i] = lineArray2[i].Split (',');
+		}
+		this.x = MapArray [0].Length;
+		this.y = MapArray.Length;
+		Debug.Log (MapArray [0][19]);
+		Debug.Log (MapArray [19][19]);
+		Debug.Log (BlockArray [0][19]);
+		Debug.Log (BlockArray [19][19]);
+	}
 	void Init(){
+		BoxCollider b = GameObject.Find ("地图碰撞器").GetComponent<BoxCollider> ();
+		b.center = new Vector3 (this.x / 2 * 0.64f-0.32f, this.y / 2 * 0.64f-0.32f, 0f);
+		b.size = new Vector3 (this.x * 0.64f, this.y* 0.64f, 0.2f);
 		Transform p = GameObject.Find ("BattleField").transform;
 		for (int xt = 0; xt < x; xt++) {
 			for (int yt = 0; yt < y; yt++) {
@@ -31,5 +86,6 @@ public class BattleFieldInit : MonoBehaviour {
 				//MeshCollider c = new MeshCollider ();
 			}
 		}
+
 	}
 }

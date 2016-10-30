@@ -5,15 +5,16 @@
     <DescriptorRefs value="0:" />
     <Attachment Class="PluginBehaviac.Events.StartCondition" Enable="true" Id="0" PrefabAttachmentId="-1" TargetFSMNodeId="5" />
     <FSMNodes ScreenLocationX="0" ScreenLocationY="0">
-      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="1" IsEndState="false" Method="Self.Unit::GotoDes()" Name="寻敌赶路状态" PrefabName="" PrefabNodeId="-1" ScreenLocationX="374.8818" ScreenLocationY="-104.8284">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="1" IsEndState="false" Method="Self.Unit::GotoDes()" Name="寻敌赶路状态" PrefabName="" PrefabNodeId="-1" ScreenLocationX="510.3498" ScreenLocationY="-35.01669">
         <Comment Background="NoColor" Text="" />
         <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="3" Operator="Equal" Opl="bool Self.Unit::isEnmyFound" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
+        <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="8" Operator="Equal" Opl="bool Self.Unit::isGo" Opr1="&quot;&quot;" Opr2="const bool false" PrefabAttachmentId="-1" TargetFSMNodeId="5" />
       </Node>
-      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="2" IsEndState="false" Method="Self.Unit::Attack()" Name="攻击状态" PrefabName="" PrefabNodeId="-1" ScreenLocationX="541.3111" ScreenLocationY="-68.60431">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="2" IsEndState="false" Method="Self.Unit::Attack()" Name="攻击状态" PrefabName="" PrefabNodeId="-1" ScreenLocationX="568.7372" ScreenLocationY="95.12086">
         <Comment Background="NoColor" Text="" />
         <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="4" Operator="Equal" Opl="bool Self.Unit::isEnmyFound" Opr1="&quot;&quot;" Opr2="const bool false" PrefabAttachmentId="-1" TargetFSMNodeId="5" />
       </Node>
-      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="5" IsEndState="false" Method="Self.Unit::Idle()" Name="等待状态" PrefabName="" PrefabNodeId="-1" ScreenLocationX="203.5251" ScreenLocationY="7.08283">
+      <Node Class="PluginBehaviac.Nodes.State" Enable="true" HasOwnPrefabData="false" Id="5" IsEndState="false" Method="Self.Unit::Idle()" Name="等待状态" PrefabName="" PrefabNodeId="-1" ScreenLocationX="208.5116" ScreenLocationY="23.70468">
         <Comment Background="NoColor" Text="" />
         <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="6" Operator="Equal" Opl="bool Self.Unit::isGo" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="1" />
         <Attachment Class="PluginBehaviac.Events.TransitionCondition" Effectors="0:" Enable="true" Id="7" Operator="Equal" Opl="bool Self.Unit::isEnmyFound" Opr1="&quot;&quot;" Opr2="const bool true" PrefabAttachmentId="-1" TargetFSMNodeId="2" />
