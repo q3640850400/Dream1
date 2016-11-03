@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 
 public class BattleFieldInit : MonoBehaviour {
 	public int x=100;
@@ -10,46 +11,54 @@ public class BattleFieldInit : MonoBehaviour {
 	public string [][]MapArray;
 	public string [][]BlockArray;
 	public string MapName="test1";
+	public static string localUrl;
 	// Use this for initialization
 	void Start () {
 		_Model = GameObject.Find ("Model").GetComponent<Model> ();
 		this.x = _Model.Mapx;
 		this.y = _Model.Mapy;
 		//Init ();
-		ReadTMX();
+		localUrl = Application.dataPath + "/Resources/test2.tmx";
+		ReadTMX2();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+	void ReadTMX2(){
+		XmlDocument doc = new XmlDocument();
+		doc.Load (localUrl);
+		XmlNode provinces = doc.SelectSingleNode("map"); 
+		Debug.Log (provinces);
+
+	}
+	public static string GetXmlDetail(string provinceId)
+	{
+		string _provinceName = "";
+
+		XmlDocument xmlDoc = ReadAndLoadXml();
+
+		//所有province节点
+		XmlNode provinces = xmlDoc.SelectSingleNode("province");
+
+		foreach (XmlNode province in provinces)
+		{
+			XmlElement _province = (XmlElement)province;
+
+
+			if (provinceId == _province.GetAttribute("id"))
+			{
+				//获取实际省名
+				_provinceName= _province.GetAttribute("name");
+
+			}
+		}
+
+
+		return _provinceName;
+	}
 	void ReadTMX(){
-		
-//		TextAsset binAsset = Resources.Load ("test1_地表", typeof(TextAsset)) as TextAsset;		
-//		//读取每一行的内容
-//		string [] lineArray = binAsset.text.Split (new char[]{ '\r','\n' },System.StringSplitOptions.RemoveEmptyEntries);
-//		//读取行列数
-//		for (int i = 0; i < lineArray.Length; i++) {
-//			//Debug.Log(lineArray[i]);
-//			if (lineArray[i] == "[header]") {
-//				Debug.Log(lineArray[i]);
-//				string[] s1=lineArray[i+1].Split('=');
-//				this.x = int.Parse (s1[1]);
-//				string[] s2=lineArray[i+2].Split('=');
-//				this.y = int.Parse (s2[1]);
-//				break;
-//			}
-//		}
-		//读取行列数
-		//		for (int i = 0; i < lineArray.Length; i++) {
-		//			if (lineArray[i] == "[layer]") {
-		//				for(int j =0;j < this.y; j++)
-		//				{
-		//					MapArray[j] = lineArray[j+i+3].Split (',');
-		//				}
-		//				break;
-		//			}
-		//		}
 		//读取csv二进制文件
 		TextAsset binAsset1 = Resources.Load (MapName+"_地表", typeof(TextAsset)) as TextAsset;
 		TextAsset binAsset2 = Resources.Load (MapName+"_障碍物", typeof(TextAsset)) as TextAsset;
