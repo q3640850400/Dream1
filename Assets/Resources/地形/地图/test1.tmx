@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-up" width="20" height="20" tilewidth="64" tileheight="64" nextobjectid="1">
  <tileset firstgid="1" name="DarkWorld1" tilewidth="64" tileheight="64" tilecount="32" columns="8">
-  <image source="DarkWorld1.png" width="512" height="256"/>
+  <image source="../../test1.png" width="512" height="256"/>
  </tileset>
  <layer name="地形" width="20" height="20">
   <data encoding="csv">

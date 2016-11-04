@@ -22,8 +22,13 @@ public class FSM_Ctrl : behaviac.Agent
 	public static FSM_Ctrl Instance=null;
 	public string behaviorTree 		= "FSM_Ctrl";
 	protected bool btloadResult 	= false;
+
+	public bool righthand = true;//惯用手为右手
+
 	string ConstructionPrefabPath="单位/Prefab/";
 	GameObject ReadyBuild = null;//准备建造的建筑
+	private int x;
+	private int y;
 	public string Name;
 	LayerMask LandMask=1<<8;
 
@@ -79,7 +84,7 @@ public class FSM_Ctrl : behaviac.Agent
 		RaycastHit hitinfo;
 		if(Physics.Raycast(ray,out hitinfo,1000,LandMask)){
 			curMousePos = hitinfo.point + new Vector3 (0f, 0f, 0f);
-			TargetRect.Instance.rect.localScale=new Vector3(preMousePos.x-curMousePos.x,preMousePos.y-curMousePos.y,1.0f);
+			TargetRect.Instance.transform.localScale=new Vector3(preMousePos.x-curMousePos.x,preMousePos.y-curMousePos.y,1.0f);
 			//Debug.Log ("pre:" + preMousePos + "  cur:" + curMousePos);
 		}
 		if (Input.GetMouseButtonUp (0)) {
@@ -149,8 +154,12 @@ public class FSM_Ctrl : behaviac.Agent
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		if(Physics.Raycast(ray,out hit,1000,LandMask)){
-			if (!isMouseOnUI()) {
-				ReadyBuild.transform.position=hit.point;
+			if (!isMouseOnUI()) {//这个函数的预编译里有个坑，到时候做手机适配时要调
+				if (righthand) {
+					this.x = (int)(hit.point.x / 0.64f);
+					this.y = (int)(hit.point.y / 0.64f);
+					ReadyBuild.transform.position = new Vector3 (x * 0.64f, y * 0.64f, 0f);
+				}
 			}
 		}
 

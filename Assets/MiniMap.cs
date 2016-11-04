@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class MiniMap : MonoBehaviour {
-	private Model _Model;
-
+	public static MiniMap Instance = null;
 	private Camera UICamera;//UI
 	private Camera GameCamera;
 	private Vector3 screenPos;//小地图中点的屏幕位置
@@ -13,15 +12,19 @@ public class MiniMap : MonoBehaviour {
 	private Vector2 gameZero;//游戏零点
 	private float mapWidth;//小地图宽度
 	private float mapHeight;//小地图高度
-	private float gameWidth;//游戏宽度
-	private float gameHeight;//游戏高度
+	public float gameWidth;//游戏宽度
+	public float gameHeight;//游戏高度
 	private Vector2 curMousePos=new Vector2();//当前鼠标位置
 	private Vector3 curGamePos=new Vector3(0f,0f,-5f);//当前游戏位置
+
+	void Awake(){
+		Instance = this;
+	}
 	// Use this for initialization
 	void Start () {
-		_Model = GameObject.Find ("Model").GetComponent<Model> ();
-		this.gameWidth = (float)_Model.Mapx*0.64f;
-		this.gameHeight = (float)_Model.Mapy*0.64f;
+		
+		this.gameWidth = (float)Model.Instance.Mapx*0.64f;
+		this.gameHeight = (float)Model.Instance.Mapy*0.64f;
 
 
 		mapWidth = 200f;//小地图宽度

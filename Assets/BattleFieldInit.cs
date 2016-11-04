@@ -5,9 +5,10 @@ using System.Xml;
 
 public class BattleFieldInit : MonoBehaviour {
 	public int tilecount;//地图的贴图一共分成多少幅
-	public int columns;//每行有多少幅
-	public int x=100;
-	public int y=100;
+	public int columns;//地图的贴图每行有多少幅
+	public int lines;//地图的贴图一共多少行，由tilecount/columns得到
+	public int x;//地图的宽度
+	public int y;//地图的高度
 	public List<GameObject> land=new List<GameObject>();
 	private Model _Model;
 	public int [][]MapArray;
@@ -16,9 +17,6 @@ public class BattleFieldInit : MonoBehaviour {
 	public static string localUrl;
 	// Use this for initialization
 	void Start () {
-		_Model = GameObject.Find ("Model").GetComponent<Model> ();
-		this.x = _Model.Mapx;
-		this.y = _Model.Mapy;
 		//Init ();
 		Init2();
 	}
@@ -32,9 +30,12 @@ public class BattleFieldInit : MonoBehaviour {
 		doc.Load (localUrl);
 		XmlNode map = doc.SelectSingleNode("map"); 
 		//Debug.Log (map);
+		this.x=int.Parse(((XmlElement)map).GetAttribute("width"));//从TMX读取地图大小x
+		this.y=int.Parse(((XmlElement)map).GetAttribute("height"));//从TMX读取地图大小y
 		XmlElement tileset = (XmlElement)map.SelectSingleNode("tileset"); 
-		tilecount=int.Parse(tileset.GetAttribute ("tilecount"));
-		columns = int.Parse (tileset.GetAttribute ("columns"));
+		tilecount=int.Parse(tileset.GetAttribute ("tilecount"));//从TMX读取tilecount
+		columns = int.Parse (tileset.GetAttribute ("columns"));//从TMX读取columns
+		lines=tilecount/columns;//计算行数
 		//XmlNode layers = map.SelectSingleNode("layer"); 
 
 		XmlNodeList layers = map.SelectNodes("layer");
@@ -51,33 +52,29 @@ public class BattleFieldInit : MonoBehaviour {
 		}
 
 	}
-	void CreateMapElmt(){
-//		Texture2D t2d = Resources.Load ("地形/地图/"+MapName) as Texture2D;
-//		GameObject g = new GameObject ();
-//		//Texture2D t2d = Resources.Load ("test1") as Texture2D;
-//		//Debug.Log (t2d);
-//		Sprite s = Sprite.Create (t2d, new Rect (0f, 0f, 64f, 64f),new Vector2(0.5f,0.5f));
-//		SpriteRenderer sr=g.AddComponent<SpriteRenderer> ();
-//		sr.sprite = s;
-//		g.transform.position = new Vector3 (0f, 0f, 0f);
-		Texture2D t2d = Resources.Load ("地形/地图/"+MapName) as Texture2D;
+	IEnumerator CreateMapElmt(){//使用协程加载
+		Texture2D t2d = Resources.Load ("地形/地图/"+MapName) as Texture2D;//1.读取纹理
 		Transform BFtran = GameObject.Find ("BattleField").transform;
 		for (int i = 0; i < this.x; i++) {
 			for (int j = 0; j < this.y; j++) {
-				int rx = (MapArray [i] [j] % 8 - 1) ;
-				int ry = (4 - (MapArray [i] [j] - 1) / 8 - 1) ;
-				int px = j-1;
-				int py = 20-i-1;
-				Rect r = new Rect (rx*64f,ry*64f,64f,64f);//纹理范围
-				Vector3 p = new Vector3 (px*0.64f+0.32f,py*0.64f+0.32f,-1f);//位置
-				Debug.Log (r);
-				Debug.Log (p);
-				Sprite S = Sprite.Create (t2d, r,new Vector2(0.5f,0.5f));
-				GameObject G = new GameObject ();
+				yield return null;//无返回表示每帧执行协程
+				int rx = (MapArray [i] [j] % columns - 1) ;//根据ij计算纹理x
+				if (rx == -1)
+					rx = columns-1;
+				int ry = (lines - (MapArray [i] [j] - 1) / columns - 1) ;//根据ij计算纹理y
+				int px = j-1;//根据ij计算位置x
+				int py = this.y-i-1;//根据ij计算位置y
+				Rect r = new Rect (rx*64f,ry*64f,64f,64f);//2.设置纹理范围
+				Vector3 p = new Vector3 (px*0.64f+0.32f,py*0.64f+0.32f,0f);//3.GameObject位置
+				//Debug.Log (MapArray [i] [j]+" i="+i+" j="+j+" r="+r);
+				Sprite S = Sprite.Create (t2d, r,new Vector2(0.5f,0.5f));//4.创建Sprite
+				GameObject G = new GameObject ();//5.创建GameObject
 				G.transform.SetParent (BFtran);
-				SpriteRenderer SR=G.AddComponent<SpriteRenderer> ();
-				SR.sprite = S;
-				G.transform.position = p;
+				SpriteRenderer SR=G.AddComponent<SpriteRenderer> ();//6.Add<SpriteRenderer>
+				SR.sprite = S;//7.捆绑Sprite和GameObject
+				SR.sortingLayerName="Land";//8.设置渲染组别
+				SR.sortingOrder = 0;//9.设置渲染层
+				G.transform.position = p;//10.设置GameObject位置
 			}
 		}
 	}
@@ -107,8 +104,8 @@ public class BattleFieldInit : MonoBehaviour {
 				Array [i] [j] = int.Parse(sArray [i] [j]);
 			}
 		}
-		this.x = Array [0].Length;
-		this.y = Array.Length;
+		//this.x = Array [0].Length;
+		//this.y = Array.Length;
 		return Array;
 	}
 //	//直接读取TXT（无用）
@@ -149,11 +146,15 @@ public class BattleFieldInit : MonoBehaviour {
 				//MeshCollider c = new MeshCollider ();
 			}
 		}
-
 	}
 	void Init2(){
 		localUrl = Application.dataPath + "/Resources/地形/地图/"+MapName+".tmx";
 		ReadTMX();
-		CreateMapElmt ();
+		StartCoroutine(CreateMapElmt ());
+		BoxCollider b = GameObject.Find ("地图碰撞器").GetComponent<BoxCollider> ();//设置地图碰撞器
+		b.center = new Vector3 (this.x / 2 * 0.64f-0.32f, this.y / 2 * 0.64f-0.32f, 0f);
+		b.size = new Vector3 (this.x * 0.64f, this.y* 0.64f, 0.2f);
+		MiniMap.Instance.gameWidth = this.x * 0.64f;//设置小地图的游戏大小属性X
+		MiniMap.Instance.gameHeight = this.y * 0.64f;//设置小地图的游戏大小属性Y
 	}
 }

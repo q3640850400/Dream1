@@ -18,6 +18,8 @@ public class Unit : behaviac.Agent
 	public int color;
 	public int UnitId;
 	public int Class;//种类：1兵种，2建筑
+	public int Volume;//视觉体积
+	public int collisionVolume;//碰撞体积
 	public float LifeMax;//最大生命
 	public float LifeCur;//当前生命
 	public float ATK=10f;//攻击力
