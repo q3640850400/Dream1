@@ -45,6 +45,7 @@ public class UI_Ctrl : MonoBehaviour {
 			}
 		}
 	}
+	//由每个按键指定相应的建筑
 	public void getBuilding(string Name){
 		page_constructions.SetActive (false);
 		FSM_Ctrl.Instance.Status = 2;

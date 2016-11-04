@@ -27,6 +27,8 @@ public class Unit : behaviac.Agent
 	public float MoveSPD=2f;//移动速度
 	public float ATKDT = 1f;//攻击间隔
 	public float TurnSPD=10f;//转身速度
+	public int x;
+	public int y;
 	public Vector3 Destination;
 	//public float Armor;
 	public bool canMove;

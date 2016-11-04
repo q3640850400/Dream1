@@ -27,9 +27,10 @@ public class FSM_Ctrl : behaviac.Agent
 
 	string ConstructionPrefabPath="单位/Prefab/";
 	GameObject ReadyBuild = null;//准备建造的建筑
-	private int x;
-	private int y;
-	public string Name;
+	public int x;
+	public int y;
+	public string Name;//建筑的名字,由UI_Ctrl的函数写入,用来找到相应的prefab
+	public int Volume;//建筑的大小
 	LayerMask LandMask=1<<8;
 
 	private Vector3 preMousePos;//鼠标起始位置
@@ -131,17 +132,23 @@ public class FSM_Ctrl : behaviac.Agent
 	{
 		// Write your logic codes here.
 		Debug.Log("请选择建筑位置");
-
 	}
 
 	[behaviac.MethodMetaInfo("ReadyConstruct", "ReadyConstruct")]
 	private void ReadyConstruct()
 	{
 		// Write your logic codes here.
-		if (Input.GetMouseButtonDown (0)) {
-			
+		#if IPHONE || ANDROID
+		if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+		#else
+		if (Input.GetMouseButtonDown (0))
+		#endif
+		{
+			if (!isMouseOnUI ()) {
 			MouseStatus = 1;
-			ReadyBuild = GameObject.Instantiate (Resources.Load(ConstructionPrefabPath + Name,typeof(GameObject)), new Vector3(0,0,0), Quaternion.identity) as GameObject;
+			ReadyBuild = GameObject.Instantiate (Resources.Load (ConstructionPrefabPath + Name, typeof(GameObject)), new Vector3 (0, 0, 0), Quaternion.identity) as GameObject;
+			Volume = ReadyBuild.GetComponent<Unit> ().collisionVolume;
+			}
 		}
 	}
 
@@ -150,20 +157,39 @@ public class FSM_Ctrl : behaviac.Agent
 	[behaviac.MethodMetaInfo("Constructing", "Constructing")]
 	private void Constructing()
 	{
-		// Write your logic codes here.
+	// Write your logic codes here.
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
-		if(Physics.Raycast(ray,out hit,1000,LandMask)){
-			if (!isMouseOnUI()) {//这个函数的预编译里有个坑，到时候做手机适配时要调
-				if (righthand) {
-					this.x = (int)(hit.point.x / 0.64f);
-					this.y = (int)(hit.point.y / 0.64f);
-					ReadyBuild.transform.position = new Vector3 (x * 0.64f, y * 0.64f, 0f);
+		if (Physics.Raycast (ray, out hit, 1000, LandMask)) {
+			if (righthand) {
+				this.x = (int)(hit.point.x / 0.64f);
+				this.y = (int)(hit.point.y / 0.64f);
+				//ReadyBuild.GetComponent<Unit> ().x = this.x;
+				//ReadyBuild.GetComponent<Unit> ().y = this.y;
+				if (this.x+1 - Volume >= 0 && this.x+1<=BattleFieldInit.Instance.x && this.y+1>=0 && this.y+Volume<=BattleFieldInit.Instance.y) {
+					Vector3 p = new Vector3 ((this.x + 1) * 0.64f - Volume * 0.32f, this.y * 0.64f + Volume * 0.32f, 0f);
+					ReadyBuild.transform.position = p;
 				}
 			}
 		}
 
 		if (Input.GetMouseButtonUp (0)) {
+			//this.x=(int)((ReadyBuild.transform.position.x-Volume/2*0.64f)/0.64f);
+			//this.y=(int)((ReadyBuild.transform.position.y+Volume/2*0.64f)/0.64f);
+			//this.x=(int)(ReadyBuild.transform.position.x/0.64f-Volume/2);//获得建筑左上角所占格子的X
+			//this.y=(int)(BattleFieldInit.Instance.y-(ReadyBuild.transform.position.y/0.64f+Volume/2));//获得建筑左上角所占格子的Y
+			//Debug.Log (Volume);
+			//Debug.Log ("x=" + this.x + " y=" + this.y + " px="+ReadyBuild.transform.position.x/0.64f+" py="+ReadyBuild.transform.position.y/0.64f);
+			for (int i = 0; i < Volume; i++) {
+				for (int j = 0; j < Volume; j++) {
+					int d = BattleFieldInit.Instance.BlockArray [BattleFieldInit.Instance.y - (this.y + (Volume)) + i] [this.x - (Volume - 1) + j];
+					//Debug.Log ((this.x - (Volume - 1) + i)+","+(BattleFieldInit.Instance.y - (this.y + (Volume - 1)) + j)+"="+d);
+					if (d != 0) {
+						return;
+					}	
+				}
+			}
+
 			isConAva = true;
 		}
 	}

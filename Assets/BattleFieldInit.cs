@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Xml;
 
 public class BattleFieldInit : MonoBehaviour {
+	public static BattleFieldInit Instance = null;
 	public int tilecount;//地图的贴图一共分成多少幅
 	public int columns;//地图的贴图每行有多少幅
 	public int lines;//地图的贴图一共多少行，由tilecount/columns得到
@@ -15,6 +16,9 @@ public class BattleFieldInit : MonoBehaviour {
 	public int [][]BlockArray;
 	public string MapName="test1";
 	public static string localUrl;
+	void Awake(){
+		Instance = this;
+	}
 	// Use this for initialization
 	void Start () {
 		//Init ();
@@ -48,6 +52,11 @@ public class BattleFieldInit : MonoBehaviour {
 			if (layer.GetAttribute ("name") == "障碍物") {
 				XmlElement data = (XmlElement)layer.SelectSingleNode("data"); 
 				BlockArray=ReadStringtoInt (data.InnerText);
+//				for (int i = 0; i < 20; i++) {
+//					for (int j = 0; j < 20; j++) {
+//						Debug.Log(i+","+j+"="+BlockArray [i] [j]);
+//					}
+//				}
 			}
 		}
 
@@ -62,7 +71,7 @@ public class BattleFieldInit : MonoBehaviour {
 				if (rx == -1)
 					rx = columns-1;
 				int ry = (lines - (MapArray [i] [j] - 1) / columns - 1) ;//根据ij计算纹理y
-				int px = j-1;//根据ij计算位置x
+				int px = j;//根据ij计算位置x
 				int py = this.y-i-1;//根据ij计算位置y
 				Rect r = new Rect (rx*64f,ry*64f,64f,64f);//2.设置纹理范围
 				Vector3 p = new Vector3 (px*0.64f+0.32f,py*0.64f+0.32f,0f);//3.GameObject位置
