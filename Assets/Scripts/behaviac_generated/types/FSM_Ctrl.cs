@@ -27,8 +27,9 @@ public class FSM_Ctrl : behaviac.Agent
 
 	string ConstructionPrefabPath="单位/Prefab/";
 	GameObject ReadyBuild = null;//准备建造的建筑
-	public int x;
-	public int y;
+	public float pixel=0.64f;//每格的像素点
+	public int x;//位置格点X
+	public int y;//位置格点Y
 	public string Name;//建筑的名字,由UI_Ctrl的函数写入,用来找到相应的prefab
 	public int Volume;//建筑的大小
 	LayerMask LandMask=1<<8;
@@ -162,24 +163,16 @@ public class FSM_Ctrl : behaviac.Agent
 		RaycastHit hit;
 		if (Physics.Raycast (ray, out hit, 1000, LandMask)) {
 			if (righthand) {
-				this.x = (int)(hit.point.x / 0.64f);
-				this.y = (int)(hit.point.y / 0.64f);
-				//ReadyBuild.GetComponent<Unit> ().x = this.x;
-				//ReadyBuild.GetComponent<Unit> ().y = this.y;
+				this.x = (int)(hit.point.x / pixel);
+				this.y = (int)(hit.point.y / pixel);
 				if (this.x+1 - Volume >= 0 && this.x+1<=BattleFieldInit.Instance.x && this.y+1>=0 && this.y+Volume<=BattleFieldInit.Instance.y) {
-					Vector3 p = new Vector3 ((this.x + 1) * 0.64f - Volume * 0.32f, this.y * 0.64f + Volume * 0.32f, 0f);
+					Vector3 p = new Vector3 ((this.x + 1) * pixel - Volume * pixel/2, this.y * pixel + Volume * pixel/2, 0f);
 					ReadyBuild.transform.position = p;
 				}
 			}
 		}
 
 		if (Input.GetMouseButtonUp (0)) {
-			//this.x=(int)((ReadyBuild.transform.position.x-Volume/2*0.64f)/0.64f);
-			//this.y=(int)((ReadyBuild.transform.position.y+Volume/2*0.64f)/0.64f);
-			//this.x=(int)(ReadyBuild.transform.position.x/0.64f-Volume/2);//获得建筑左上角所占格子的X
-			//this.y=(int)(BattleFieldInit.Instance.y-(ReadyBuild.transform.position.y/0.64f+Volume/2));//获得建筑左上角所占格子的Y
-			//Debug.Log (Volume);
-			//Debug.Log ("x=" + this.x + " y=" + this.y + " px="+ReadyBuild.transform.position.x/0.64f+" py="+ReadyBuild.transform.position.y/0.64f);
 			for (int i = 0; i < Volume; i++) {
 				for (int j = 0; j < Volume; j++) {
 					int d = BattleFieldInit.Instance.BlockArray [BattleFieldInit.Instance.y - (this.y + (Volume)) + i] [this.x - (Volume - 1) + j];
@@ -189,7 +182,8 @@ public class FSM_Ctrl : behaviac.Agent
 					}	
 				}
 			}
-
+			ReadyBuild.GetComponent<Unit> ().x = this.x;
+			ReadyBuild.GetComponent<Unit> ().y = this.y;
 			isConAva = true;
 		}
 	}
@@ -215,7 +209,7 @@ public class FSM_Ctrl : behaviac.Agent
 			return false;
 	}
 	public bool init(){
-		
+		this.pixel = Init_Ctrl.Instance.pixel;
 		//behaviac.Agent.BindInstance (this, "FSM_Ctrl0");
 		if(behaviorTree.Length > 0)
 		{

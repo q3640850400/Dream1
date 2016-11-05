@@ -27,8 +27,8 @@ public class Unit : behaviac.Agent
 	public float MoveSPD=2f;//移动速度
 	public float ATKDT = 1f;//攻击间隔
 	public float TurnSPD=10f;//转身速度
-	public int x;
-	public int y;
+	public int x;//右下角的点
+	public int y;//右下角的点
 	public Vector3 Destination;
 	//public float Armor;
 	public bool canMove;
@@ -73,7 +73,7 @@ public class Unit : behaviac.Agent
 	}
 	void ActTurn(){
 		Vector3 targetdir = Destination - transform.position;
-		if (targetdir.magnitude <= 1) {
+		if (targetdir.magnitude <= 0.32f) {
 			isGo = false;
 		} else {
 			transform.up=targetdir.normalized;
