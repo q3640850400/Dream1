@@ -27,8 +27,8 @@ public class MiniMap : MonoBehaviour {
 		this.gameHeight = (float)Model.Instance.Mapy*0.64f;
 
 
-		mapWidth = 200f;//小地图宽度
-		mapHeight = 200f;//小地图高度
+		mapWidth = 160f;//小地图宽度
+		mapHeight = 160f;//小地图高度
 
 		UICamera = GameObject.Find ("UICamera").GetComponent<Camera> ();
 		GameCamera = GameObject.Find ("GameCamera").GetComponent<Camera> ();
@@ -41,10 +41,9 @@ public class MiniMap : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		test ();
+		test1 ();
 	}
-	void test(){
-		//Debug.Log (screenPos);
+	void test1(){
 		if (Input.GetMouseButton (0)) {			
 			curMousePos.x=Input.mousePosition.x;
 			curMousePos.y = Input.mousePosition.y;

@@ -14,7 +14,7 @@ public class BattleFieldInit : MonoBehaviour {
 	private Model _Model;
 	public int [][]MapArray;
 	public int [][]BlockArray;
-	public string MapName="test1";
+	public string MapName="test3";
 	public static string localUrl;
 	void Awake(){
 		Instance = this;
@@ -45,18 +45,13 @@ public class BattleFieldInit : MonoBehaviour {
 		XmlNodeList layers = map.SelectNodes("layer");
 		foreach (XmlNode l in layers) {
 			XmlElement layer = (XmlElement)l;
-			if (layer.GetAttribute ("name") == "地形") {
+			if (layer.GetAttribute ("name") == "块层 1") {
 				XmlElement data = (XmlElement)layer.SelectSingleNode("data"); 
 				MapArray=ReadStringtoInt (data.InnerText);
 			}
-			if (layer.GetAttribute ("name") == "障碍物") {
+			if (layer.GetAttribute ("name") == "块层 2") {
 				XmlElement data = (XmlElement)layer.SelectSingleNode("data"); 
 				BlockArray=ReadStringtoInt (data.InnerText);
-//				for (int i = 0; i < 20; i++) {
-//					for (int j = 0; j < 20; j++) {
-//						Debug.Log(i+","+j+"="+BlockArray [i] [j]);
-//					}
-//				}
 			}
 		}
 
@@ -65,8 +60,8 @@ public class BattleFieldInit : MonoBehaviour {
 		Texture2D t2d = Resources.Load ("地形/地图/"+MapName) as Texture2D;//1.读取纹理
 		Transform BFtran = GameObject.Find ("BattleField").transform;
 		for (int i = 0; i < this.x; i++) {
+			yield return null;//无返回表示每帧执行协程
 			for (int j = 0; j < this.y; j++) {
-				yield return null;//无返回表示每帧执行协程
 				int rx = (MapArray [i] [j] % columns - 1) ;//根据ij计算纹理x
 				if (rx == -1)
 					rx = columns-1;
