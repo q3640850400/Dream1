@@ -45,16 +45,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BattleFieldInit.cs" />
-     <Compile Include="Assets\Init_Ctrl.cs" />
-     <Compile Include="Assets\MiniMap.cs" />
      <Compile Include="Assets\Model.cs" />
+     <Compile Include="Assets\Scripts\CTRL\BattleFieldInit.cs" />
      <Compile Include="Assets\Scripts\CTRL\BehaviacFileManager.cs" />
      <Compile Include="Assets\Scripts\CTRL\BehaviacSystem.cs" />
      <Compile Include="Assets\Scripts\CTRL\Game_Ctrl.cs" />
+     <Compile Include="Assets\Scripts\CTRL\Init_Ctrl.cs" />
+     <Compile Include="Assets\Scripts\CTRL\MiniMap.cs" />
      <Compile Include="Assets\Scripts\CTRL\Mouse_Ctrl.cs" />
-     <Compile Include="Assets\Scripts\CTRL\R_message.cs" />
+     <Compile Include="Assets\Scripts\CTRL\TargetRect.cs" />
      <Compile Include="Assets\Scripts\CTRL\UI_Ctrl.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Unit\JiQiangBing.cs" />
      <Compile Include="Assets\Scripts\behaviac\runtime\Agent\Agent.cs" />
      <Compile Include="Assets\Scripts\behaviac\runtime\Agent\Context.cs" />
@@ -137,8 +138,6 @@
      <Compile Include="Assets\Scripts\behaviac_generated\types\AgentProperties.cs" />
      <Compile Include="Assets\Scripts\behaviac_generated\types\FSM_Ctrl.cs" />
      <Compile Include="Assets\Scripts\behaviac_generated\types\Unit.cs" />
-     <Compile Include="Assets\TargetRect.cs" />
-     <Compile Include="Assets\UnitProperty.cs" />
      <None Include="Assets\behaviac\FSM_Ctrl_Meta.xml" />
      <None Include="Assets\Scripts\behaviac\runtime\readme.txt" />
      <None Include="Assets\Scripts\behaviac\runtime\version.txt" />
